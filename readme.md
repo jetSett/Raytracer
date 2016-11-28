@@ -15,6 +15,10 @@
 
 Intégralité des noms en anglais
 
+Les headers sont en .hpp
+
+Commentez votre code, BORDEL.
+
 - Classe :   NomClasse
 - Interface : INomInterface
 - Attributs privé : _nomprive
