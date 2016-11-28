@@ -2,8 +2,11 @@
 
 ## To-do list
 
-- [ ]
-- [ ]
+- [ ] Faire un moteur basique comprenant :
+	- un modèle de camera simple (double plan)
+	- l'intersection rayon/sphère
+	- affichage en fonction de la profondeur d'un objet
+- [ ] Programme d'affichage en Python : fichier d'input à définir
 - [ ]
 - [ ]
 
@@ -12,13 +15,11 @@
 
 Intégralité des noms en anglais
 
-# C++ :
-
 - Classe :   NomClasse
 - Interface : INomInterface
 - Attributs privé : _nomprive
 
-## Architecture
+## Architecture C++
 
 - Class Point
 - Class Vecteur
@@ -31,7 +32,16 @@ Intégralité des noms en anglais
 	_methods_:
 		- Intersec (Ray, Object)
 
-	Class Shape :
-		- rayon
-		- center  
-		(for spheres. Triangles for more general shapes later)
+- Class Shape :
+	- rayon
+	- center  
+	(for spheres. Triangles for more general shapes later)
+	
+
+## Python
+
+blablabla
+
+## Concepts et idées
+
+- Coordonnées homogènes
