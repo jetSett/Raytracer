@@ -4,7 +4,7 @@
 
 - [ ]
 - [ ]
-- [ ] 
+- [ ]
 - [ ]
 
 
@@ -14,19 +14,20 @@ Intégralité des noms en anglais
 
 # C++ :
 
-- Classe :   CNomClasse
+- Classe :   NomClasse
 - Interface : INomInterface
 - Attributs privé : _nomprive
 
 ## Architecture
 
-- Class CPoint
-- Class CVecteur
+- Class Point
+- Class Vecteur
 
 /!\ CPoint et CVecteur sont distinctes !
 
 - Class CRay : contient un point (origine) et un vecteur (direction)
-- Interface IShape : 
+- Interface IShape :
+
 	_methods_:
 		- Intersec (Ray, Object)
 
