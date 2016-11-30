@@ -21,7 +21,7 @@ Commentez votre code, BORDEL.
 
 - Classe :   NomClasse
 - Interface : INomInterface
-- Attributs privé : _nomprive
+- Attributs privé : _nomPrive
 
 ## Architecture C++
 
