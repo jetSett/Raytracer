@@ -7,9 +7,13 @@ class Sphere : public IShape {
     
 public:
 
+    Sphere(Point, Scalar);
     virtual Point intersect(const Ray&) const override;
     
 private:
+
+    Point center;
+    Scalar radius;
     
 };
 
