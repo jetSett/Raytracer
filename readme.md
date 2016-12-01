@@ -36,7 +36,7 @@ Commentez votre code, BORDEL.
 	_methods_:
 		- Intersec (Ray)
 
-- Class Shape :
+- Class Sphere :
 	- rayon
 	- center  
 	(for spheres. Triangles for more general shapes later)
