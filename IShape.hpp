@@ -7,7 +7,7 @@ public:
     
     IShape() = default;
     
-    virtual Point intersect(const Ray&) = 0;
+    virtual Point intersect(const Ray&) const = 0;
 };
 
 #endif
