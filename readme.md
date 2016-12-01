@@ -28,9 +28,9 @@ Commentez votre code, BORDEL.
 - Class Point
 - Class Vecteur
 
-/!\ CPoint et CVecteur sont distinctes !
+/!\ Point et Vecteur sont distinctes !
 
-- Class CRay : contient un point (origine) et un vecteur (direction)
+- Class Ray : contient un point (origine) et un vecteur (direction)
 - Interface IShape :
 
 	_methods_:
