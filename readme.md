@@ -26,15 +26,15 @@ Commentez votre code, BORDEL.
 ## Architecture C++
 
 - Class Point
-- Class Vecteur
+- Class Vect3
 
-/!\ Point et Vecteur sont distinctes !
+/!\ Point et Vect3 sont distinctes !
 
 - Class Ray : contient un point (origine) et un vecteur (direction)
 - Interface IShape :
 
 	_methods_:
-		- Intersec (Ray, Object)
+		- Intersec (Ray)
 
 - Class Shape :
 	- rayon
