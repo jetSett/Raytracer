@@ -1,5 +1,11 @@
 ﻿# Moteur de lancer de rayon PROJ1 2016
 
+Comment faire fonctionner le code :
+- taper "cmake ." dans la console, cela créera automatiquement un joli Makefile
+- taper "make" pour compiler ce qu'il faut
+
+/!\ A priori il faut refaire ceci quand on rajoute des fichiers 
+
 ## To-do list
 
 - [ ] Faire un moteur basique comprenant :
