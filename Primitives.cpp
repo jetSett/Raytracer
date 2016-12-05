@@ -13,14 +13,14 @@ const Point origin(Scalar(0), Scalar(0), Scalar(0));
 /// \param z z coordinate
 ///
 /// Copy constructor is also available
-Point(Scalar _x, Scalar _y, Scalar _z):
+Point::Point(Scalar _x, Scalar _y, Scalar _z):
     x(_x), y(_y), z(_z)
     {}
     
 /// \fn void operator+=(const Vect3& direction)
 /// \brief Translate point in direction
 /// \param direction direction of translation
-void operator+=(const Vect3& direction) {
+void Point::operator+=(const Vect3& direction) {
     x += direction(0);
     y += direction(1);
     z += direction(2);
