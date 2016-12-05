@@ -4,9 +4,7 @@ project(Raytracer)
 
 set(EXECUTABLE_OUTPUT_PATH bin/)
 
-find_package(PkgConfig)
-pkg_search_module(Eigen3 REQUIRED eigen3)
-
+find_package(Eigen3)
   
 INCLUDE_DIRECTORIES ( "${EIGEN3_INCLUDE_DIR}" )
 
