@@ -4,7 +4,11 @@ Comment faire fonctionner le code :
 - taper "cmake ." dans la console, cela créera automatiquement un joli Makefile
 - taper "make" pour compiler ce qu'il faut
 
-/!\ A priori il faut refaire ceci quand on rajoute des fichiers 
+/!\ A priori il faut refaire ceci quand on rajoute des fichiers
+
+## installation de la SFML
+Il faut installer le paquet libsfml-dev
+Il faut créer le fichier FindSFML.cmake disponible à l'adresse suivante : https://github.com/SFML/SFML/blob/master/cmake/Modules/FindSFML.cmake dans le dossier /usr/share/cmake<votre version>/Modules
 
 ## To-do list
 
@@ -46,7 +50,7 @@ Commentez votre code, BORDEL.
 	- rayon
 	- center  
 	(for spheres. Triangles for more general shapes later)
-	
+
 
 ## Python
 

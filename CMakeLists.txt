@@ -5,7 +5,8 @@ project(Raytracer)
 set(EXECUTABLE_OUTPUT_PATH bin/)
 
 find_package(Eigen3)
-  
+find_package(SFML)
+
 INCLUDE_DIRECTORIES ( "${EIGEN3_INCLUDE_DIR}" )
 
 file(
@@ -21,7 +22,7 @@ file(
 if(CMAKE_COMPILER_IS_GNUCXX)
     add_definitions(-std=c++14)
 endif()
-      
+
 add_executable(
   Raytracer
   ${source_files}
