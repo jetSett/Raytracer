@@ -5,14 +5,14 @@ SceneDisplayer::SceneDisplayer(unsigned int width, unsigned int height):
 
   }
 
-void SceneDisplayer::update(const vector<uint32_t>& pixels) {
-  _image.create(_with, _height, reinterpret_cast<const sf::Uint8*>(pixels.data()));
+void SceneDisplayer::update(const std::vector<uint32_t>& pixels) {
+  _image.create(_width, _height, reinterpret_cast<const sf::Uint8*>(pixels.data()));
   _texture.loadFromImage(_image);
-  _sprite.setTexture(_image);
+  _sprite.setTexture(_texture);
 }
 
 void SceneDisplayer::draw(sf::RenderTarget& target, sf::RenderStates states) const {
   states.transform *= getTransform();
   states.texture = &_texture;
-  _sprite.draw(target, states);
+  target.draw(_sprite, states);
 }
