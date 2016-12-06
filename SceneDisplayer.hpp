@@ -15,6 +15,9 @@ private:
 
   unsigned int _width;
   unsigned int _height;
+  sf::Image _image;
+  sf::Texture _texture:
+  sf::Sprite _sprite;
 };
 
 #endif
