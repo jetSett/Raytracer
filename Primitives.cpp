@@ -4,7 +4,7 @@
 /// \brief Origin
 ///
 /// Constant point at coordinates (0, 0, 0)
-const Point origin(Scalar(0), Scalar(0), Scalar(0));
+const Point absolut_origin(Scalar(0), Scalar(0), Scalar(0));
 
 /// \fn Point(Scalar x, Scalar y, Scalar z)
 /// \brief Constructor for Point
@@ -16,7 +16,7 @@ const Point origin(Scalar(0), Scalar(0), Scalar(0));
 Point::Point(Scalar _x, Scalar _y, Scalar _z):
     x(_x), y(_y), z(_z)
     {}
-    
+
 /// \fn void operator+=(const Vect3& direction)
 /// \brief Translate point in direction
 /// \param direction direction of translation

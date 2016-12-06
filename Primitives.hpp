@@ -22,13 +22,13 @@ using Vect3 = Eigen::Matrix<Scalar, 3, 1>;
 /// \struct Point Primitives.hpp
 /// \brief Point in 3D space
 struct Point {
-    
+
     Point(Scalar, Scalar, Scalar);
     Point(const Point&) = default;
     Point& operator=(const Point&) = default;
-    
+
     void operator+=(const Vect3&);
-    
+
     Scalar x;
     Scalar y;
     Scalar z;
@@ -37,6 +37,6 @@ struct Point {
 Point operator+(const Point&, const Vect3&);
 Vect3 fromTo(Point, Point);
 
-extern const Point origin;
+extern const Point absolut_origin;
 
 #endif
