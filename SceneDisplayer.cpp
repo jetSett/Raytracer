@@ -10,3 +10,9 @@ void SceneDisplayer::update(const vector<uint32_t>& pixels) {
   _texture.loadFromImage(_image);
   _sprite.setTexture(_image);
 }
+
+void SceneDisplayer::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+  states.transform *= getTransform();
+  states.texture = &_texture;
+  _sprite.draw(target, states);
+}
