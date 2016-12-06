@@ -3,11 +3,11 @@
 
 #include "Primitives.hpp"
 
-struct Ray {
-    
-    Ray(Point, Vect3);
-    
-    Point departure;
+class Ray {
+public:
+    Ray(const Point&, const Vect3&);
+
+    Point origin;
     Vect3 direction;
 };
 
