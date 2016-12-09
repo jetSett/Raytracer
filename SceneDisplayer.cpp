@@ -1,9 +1,15 @@
 #include "SceneDisplayer.hpp"
 
 SceneDisplayer::SceneDisplayer(unsigned int width, unsigned int height):
-  _width(width), _height(height), _image(), _texture(), _sprite() {
+  _width(width), _height(height), _image(), _texture(), _sprite() {}
 
-  }
+size_t SceneDisplayer::width() const {
+  return _width;
+}
+
+size_t SceneDisplayer::height() const {
+  return _height;
+}
 
 void SceneDisplayer::update(const std::vector<uint32_t>& pixels) {
   _image.create(_width, _height, reinterpret_cast<const sf::Uint8*>(pixels.data()));
