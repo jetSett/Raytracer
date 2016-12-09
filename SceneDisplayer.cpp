@@ -16,3 +16,7 @@ void SceneDisplayer::draw(sf::RenderTarget& target, sf::RenderStates states) con
   states.texture = &_texture;
   target.draw(_sprite, states);
 }
+
+bool SceneDisplayer::saveToFile(const std::string& filename) const {
+  return _image.saveToFile(filename);
+}

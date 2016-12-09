@@ -12,6 +12,7 @@ public:
 
   SceneDisplayer(unsigned int, unsigned int);
   void update(const std::vector<uint32_t>&);
+  bool saveToFile(const std::string&) const;
 
 private:
 
