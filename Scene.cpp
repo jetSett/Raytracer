@@ -9,14 +9,10 @@ bool Scene::intersect(const Ray& ray, Point& out) const {
     if (shape->intersect(ray, p)) {
       Vect3 v(fromTo(ray.origin, p));
       Scalar t = v.squaredNorm();
-
-      if (!found)
-        tMax = t;
-      else if (t < tMax) {
+      if (!found || t < tMax) {
         tMax = t;
         out = p;
       }
-
       found = true;
     }
   }
