@@ -1,19 +1,21 @@
 #ifndef RAYTRACER_ENGINE_HPP
 #define RAYTRACER_ENGINE_HPP
 
-#include <vector>
-
 class RaytracerEngine {
 
 public:
 
-  RaytracerEngine(Scene&, SceneDisplayer&);
+  RaytracerEngine() = delete;
+  RaytracerEngine(const RaytracerEngine&) = delete;
+  RaytracerEngine& operator=(const RaytracerEngine&) = delete;
+  RaytracerEngine(const Scene&, SceneDisplayer&);
+
+  void updateScreen();
 
 private:
 
-  Scene& _scene;
-  SceneDisplayer _sceneDisplayer;
-  std::vector<uint32_t> _screen;
+  const Scene& _scene;
+  SceneDisplayer& _sceneDisplayer;
 };
 
 #endif
