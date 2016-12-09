@@ -1,7 +1,6 @@
 #include "Scene.hpp"
 
 bool Scene::intersect(const Ray& ray, Point& out) const {
-
   bool found = false;
   Scalar tMax;
   for (const auto& shape : _shapes) {

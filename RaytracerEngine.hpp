@@ -1,6 +1,9 @@
 #ifndef RAYTRACER_ENGINE_HPP
 #define RAYTRACER_ENGINE_HPP
 
+#include "Scene.hpp"
+#include "SceneDisplayer.hpp"
+
 class RaytracerEngine {
 
 public:
@@ -10,7 +13,7 @@ public:
   RaytracerEngine& operator=(const RaytracerEngine&) = delete;
   RaytracerEngine(const Scene&, SceneDisplayer&);
 
-  void updateScreen();
+  void updateScreen(uint32_t);
 
 private:
 
