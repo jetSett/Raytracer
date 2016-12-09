@@ -23,6 +23,7 @@ using Vect3 = Eigen::Matrix<Scalar, 3, 1>;
 /// \brief Point in 3D space
 struct Point {
 
+    Point() = default;
     Point(Scalar, Scalar, Scalar);
     Point(const Point&) = default;
     Point& operator=(const Point&) = default;
