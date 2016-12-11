@@ -26,8 +26,8 @@ public:
   /// \fn void update(const std::vector<uint32_t>& pixels)
   /// \brief update Image registered in SceneDisplayer
   /// WARNING : very slow, not designed for rendering loop
-  /// \param a vector of colors, of size width * height
-  void update(const std::vector<uint32_t>&);
+  /// \param image a vector of colors, of size width * height
+  void update(const std::vector<uint32_t>& image);
 
   /// \fn bool saveToFile(const std::string&)
   /// \brief save Image on disk
