@@ -3,6 +3,9 @@
 
 #include "Primitives.hpp"
 
+
+/// \class Ray
+/// \brief represent a ray of light, from a point with a direction
 class Ray {
 public:
     Ray(const Point&, const Vect3&);

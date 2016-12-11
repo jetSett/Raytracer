@@ -21,11 +21,7 @@ Vect3 fromTo(Point from, Point to) {
     return Vect3(to.x - from.x, to.y - from.y, to.z - from.z);
 }
 
-/// \fn Point operator+(const Point& from, const Vect3& direction)
-/// \brief return the translation of a point A in direction d
-/// \param from point A
-/// \param direction direction d of translation
-/// \param the Point constructed
+
 Point operator+(const Point& from, const Vect3& direction) {
     Point temp(from);
     temp += direction;
