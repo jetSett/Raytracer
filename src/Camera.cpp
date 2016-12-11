@@ -3,7 +3,8 @@
 static const Scalar farfarAway = Scalar(1000);
 
 Camera::Camera(const Point& position, const Vect3& direction, size_t width, size_t height, Scalar gammaWidth, Scalar gammaHeight):
-    _position(position), _direction(direction), _width(width), _height(height), _gammaWidth(gammaWidth), _gammaHeight(gammaHeight)
+    _position(position), _direction(direction*(1./direction.norm())),
+    _width(width), _height(height), _gammaWidth(gammaWidth), _gammaHeight(gammaHeight)
 {}
 
 Ray Camera::getRay(unsigned int linePixel, unsigned int columnPixel) const {
@@ -16,5 +17,6 @@ Ray Camera::getRay(unsigned int linePixel, unsigned int columnPixel) const {
     Point rayTarget(_position);
     rayTarget += Vect3(line*_gammaWidth, column*_gammaHeight, farfarAway);
 
-    return Ray(rayOrigin, fromTo(rayOrigin, rayTarget));
+    Vect3 dir = fromTo(rayOrigin, rayTarget);
+    return Ray(rayOrigin, dir/dir.norm());
 }

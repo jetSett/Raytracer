@@ -8,8 +8,8 @@
 #include "Sphere.hpp"
 
 int main(int, char * []) {
-    const unsigned int width = 512;
-    const unsigned int height = 256;
+    const unsigned int width = 1024;
+    const unsigned int height = 512;
 
     // RaytracerEngine
 
@@ -22,7 +22,7 @@ int main(int, char * []) {
     RaytracerEngine engine(collection, displayer);
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
-    engine.updateScreen(0xFFF0, camera);
+    engine.updateScreen(0x0000FF00, camera);
     // Render Loop
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer 1.0");

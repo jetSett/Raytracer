@@ -11,7 +11,7 @@ Scalar Collection::intersect(const Ray& ray) const {
         if (t == no_intersection)
             continue ;
         if (tMax == no_intersection || t < tMax)
-                tMax = t;
+            tMax = t;
     }
     return tMax;
 }
