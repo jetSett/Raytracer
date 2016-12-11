@@ -26,14 +26,14 @@ public:
   /// \fn void update(const std::vector<uint32_t>& pixels)
   /// \brief update Image registered in SceneDisplayer
   /// WARNING : very slow, not designed for rendering loop
-  /// \param image a vector of colors, of size width * height
+  /// \param name image a vector of colors, of size width * height
   void update(const std::vector<uint32_t>& image);
 
   /// \fn bool saveToFile(const std::string&)
   /// \brief save Image on disk
-  /// \param name of file, type of Image deduce from extension
+  /// \param name name of file, type of Image deduce from extension
   /// \return true if success, else false
-  bool saveToFile(const std::string&) const;
+  bool saveToFile(const std::string& name) const;
 
 private:
 
