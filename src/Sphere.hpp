@@ -4,6 +4,9 @@
 #include "IShape.hpp"
 #include "Primitives.hpp"
 
+
+/// \class Sphere
+/// \brief represent a Sphere
 class Sphere : public IShape {
 
 public:
