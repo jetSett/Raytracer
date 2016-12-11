@@ -5,7 +5,7 @@ Triangle::Triangle(Point v1, Point v2, Point v3){
 }
 
 // implementing the Moller Trumbore algorithm, from the wikipedia page
-Scalar Triangle::intersection(const Ray& ray) const {
+Scalar Triangle::intersect(const Ray& ray) const {
     Vect3 e1 = fromTo(_v1, _v2), e2 = fromTo(_v1, _v3);
 
     const Vect3& D = ray.direction;
