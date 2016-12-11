@@ -22,7 +22,7 @@ using Vect3 = Eigen::Matrix<Scalar, 3, 1>;
 
 /// \def EPSILON
 /// \brief a little value used to determine if something is equal to zero
-const Scalar EPSILON = 0.000001;
+extern const Scalar EPSILON;
 
 /// \fn equal_zero
 /// \brief test if a Scalar is very near from zero
