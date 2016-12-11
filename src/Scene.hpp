@@ -7,19 +7,17 @@
 #include "IShape.hpp"
 #include "Ray.hpp"
 
-class Scene {
+class Collection {
 
 public:
 
-  Scene() = default;
-  Scene(const Scene&) = delete;
-  Scene& operator=(const Scene&) = delete;
+  Collection() = default;
 
   Scalar intersect(const Ray&) const;
 
 private:
 
-  std::vector<std::unique_ptr<IShape>> _shapes;
+  std::vector<IShape*> _shapes;
 };
 
 #endif
