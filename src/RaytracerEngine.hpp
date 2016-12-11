@@ -13,7 +13,7 @@ public:
     RaytracerEngine& operator=(const RaytracerEngine&) = delete;
     RaytracerEngine(const Scene&, SceneDisplayer&);
 
-    void updateScreen(uint32_t);
+    void updateScreen(uint32_t, const Camera&);
 
 private:
 
