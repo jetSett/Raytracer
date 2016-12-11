@@ -1,6 +1,6 @@
 #include "Collection.hpp"
 
-Collection Collection::intersect(const Ray& ray) const {
+Scalar Collection::intersect(const Ray& ray) const {
     Scalar tMax = no_intersection;
     for (const auto& shape : _shapes) {
         Scalar t = shape->intersect(ray);

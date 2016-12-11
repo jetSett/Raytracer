@@ -18,7 +18,7 @@ public:
 
 private:
 
-    const Scene& _scene;
+    const Collection& _scene;
     SceneDisplayer& _sceneDisplayer;
 };
 
