@@ -2,6 +2,7 @@
 #define CAMERA_HPP
 
 #include "Primitives.hpp"
+#include "Ray.hpp"
 
 /// \class Camera
 /// \brief A class to manipulate cameras
@@ -24,16 +25,16 @@ public:
 
     /// \fn Ray getRay(unsigned int line, unsigned int column)
     /// \brief return Ray to enlight the pixel (line, column)
-    /// param line line of pixel
-    /// param column column of pixel
-    /// WARNING : direction must have the forme (0, 0, z)
-    /// TODO : fix getRay for other directions
+    /// \param line line of pixel
+    /// \param column column of pixel
+    /// \warning : direction must have the form (0, 0, z)
+    /// \todo : fix getRay for other directions
     Ray getRay(unsigned int line, unsigned int column) const;
 
 private:
 
     Point _position;
-    Vect3 _normal;
+    Vect3 _direction;
     size_t _width;
     size_t _height;
     Scalar _gammaWidth;
