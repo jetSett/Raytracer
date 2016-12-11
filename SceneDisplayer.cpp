@@ -1,28 +1,28 @@
 #include "SceneDisplayer.hpp"
 
 SceneDisplayer::SceneDisplayer(unsigned int width, unsigned int height):
-  _width(width), _height(height), _image(), _texture(), _sprite() {}
+    _width(width), _height(height), _image(), _texture(), _sprite() {}
 
 size_t SceneDisplayer::width() const {
-  return _width;
+    return _width;
 }
 
 size_t SceneDisplayer::height() const {
-  return _height;
+    return _height;
 }
 
 void SceneDisplayer::update(const std::vector<uint32_t>& pixels) {
-  _image.create(_width, _height, reinterpret_cast<const sf::Uint8*>(pixels.data()));
-  _texture.loadFromImage(_image);
-  _sprite.setTexture(_texture);
+    _image.create(_width, _height, reinterpret_cast<const sf::Uint8*>(pixels.data()));
+    _texture.loadFromImage(_image);
+    _sprite.setTexture(_texture);
 }
 
 void SceneDisplayer::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-  states.transform *= getTransform();
-  states.texture = &_texture;
-  target.draw(_sprite, states);
+    states.transform *= getTransform();
+    states.texture = &_texture;
+    target.draw(_sprite, states);
 }
 
 bool SceneDisplayer::saveToFile(const std::string& filename) const {
-  return _image.saveToFile(filename);
+    return _image.saveToFile(filename);
 }
