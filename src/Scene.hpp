@@ -1,5 +1,5 @@
-#ifndef SCENE_HPP
-#define SCENE_HPP
+#ifndef COLLECTION_HPP
+#define COLLECTION_HPP
 
 #include <memory>
 #include <vector>
