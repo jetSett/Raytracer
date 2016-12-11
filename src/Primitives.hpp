@@ -24,10 +24,22 @@ using Vect3 = Eigen::Matrix<Scalar, 3, 1>;
 struct Point {
 
     Point() = default;
+
+    /// \fn Point(Scalar x, Scalar y, Scalar z)
+    /// \brief Constructor for Point
+    /// \param x x coordinate
+    /// \param y y coordinate
+    /// \param z z coordinate
+    /// \note Copy constructor is also available
     Point(Scalar, Scalar, Scalar);
     Point(const Point&) = default;
     Point& operator=(const Point&) = default;
 
+
+
+    /// \fn void operator+=(const Vect3& direction)
+    /// \brief Translate point in direction
+    /// \param direction direction of translation
     void operator+=(const Vect3&);
 
     Scalar x;
@@ -35,9 +47,25 @@ struct Point {
     Scalar z;
 };
 
+/// \fn Point operator+(const Point& from, const Vect3& direction)
+/// \brief return the translation of a point A in direction d
+/// \param from point A
+/// \param direction direction d of translation
+/// \param the Point constructed
 Point operator+(const Point&, const Vect3&);
+
+
+
+/// \fn Vect3 fromTo(Point from, Point to)
+/// \brief construct a Vect3 AB which connects two points
+/// \param from Point A
+/// \param to Point B
+/// \return the Vect3 constructed
 Vect3 fromTo(Point, Point);
 
+
+/// \def origin
+/// \brief Constant point at coordinates (0, 0, 0)
 extern const Point absolut_origin;
 
 

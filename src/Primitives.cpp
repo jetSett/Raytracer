@@ -1,36 +1,22 @@
 #include "Primitives.hpp"
 
-/// \def origin
-/// \brief Origin
-///
-/// Constant point at coordinates (0, 0, 0)
+
+
 const Point absolut_origin(Scalar(0), Scalar(0), Scalar(0));
 const Scalar no_intersection = -1;
-/// \fn Point(Scalar x, Scalar y, Scalar z)
-/// \brief Constructor for Point
-/// \param x x coordinate
-/// \param y y coordinate
-/// \param z z coordinate
-///
-/// Copy constructor is also available
+
+
 Point::Point(Scalar _x, Scalar _y, Scalar _z):
     x(_x), y(_y), z(_z)
     {}
 
-/// \fn void operator+=(const Vect3& direction)
-/// \brief Translate point in direction
-/// \param direction direction of translation
 void Point::operator+=(const Vect3& direction) {
     x += direction(0);
     y += direction(1);
     z += direction(2);
 }
 
-/// \fn Vect3 fromTo(Point from, Point to)
-/// \brief construct a Vect3 AB which connects two points
-/// \param from Point A
-/// \param to Point B
-/// \return the Vect3 constructed
+
 Vect3 fromTo(Point from, Point to) {
     return Vect3(to.x - from.x, to.y - from.y, to.z - from.z);
 }
