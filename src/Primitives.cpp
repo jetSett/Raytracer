@@ -10,7 +10,7 @@ bool equal_zero(Scalar s){
 }
 
 bool negative(Scalar s){
-    return s< (-EPSILON);
+    return s < (-EPSILON);
 }
 
 bool positive(Scalar s){
