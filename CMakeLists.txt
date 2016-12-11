@@ -5,7 +5,6 @@ project(Raytracer)
 set(EXECUTABLE_OUTPUT_PATH bin/)
 
 find_package(Eigen3)
-find_package(SFML)
 
 INCLUDE_DIRECTORIES ( "${EIGEN3_INCLUDE_DIR}" )
 
@@ -27,3 +26,7 @@ add_executable(
   Raytracer
   ${source_files}
   )
+
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+find_package(SFML)
+target_link_libraries(Raytracer ${SFML_LIBRARIES})
