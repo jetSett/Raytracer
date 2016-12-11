@@ -15,7 +15,7 @@ public:
   Scene(const Scene&) = delete;
   Scene& operator=(const Scene&) = delete;
 
-  bool intersect(const Ray&, Point&) const;
+  Scalar intersect(const Ray&) const;
 
 private:
 
