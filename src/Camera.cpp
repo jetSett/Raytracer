@@ -2,7 +2,7 @@
 
 static Scalar farfarAway = Scalar(1000);
 
-Camera::Camera(const Point& position, const Vect3& direction, Scalar gammaWidth, Scalar gammaHeight):
+Camera::Camera(const Point& position, const Vect3& direction, size_t width, size_t height, Scalar gammaWidth, Scalar gammaHeight):
     _position(position), _direction(direction), _width(width), _height(height), _gammaWidth(gammaWidth), _gammaHeight(gammaHeight),
 {}
 
