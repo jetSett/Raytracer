@@ -12,7 +12,7 @@ public:
 
     /// \fn intersect
     /// \brief get the intersection point with ray
-    virtual bool intersect(const Ray& ray, Point& out) const override;
+    virtual Scalar intersect(const Ray& ray) const override;
 
 private:
 

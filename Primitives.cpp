@@ -5,7 +5,7 @@
 ///
 /// Constant point at coordinates (0, 0, 0)
 const Point absolut_origin(Scalar(0), Scalar(0), Scalar(0));
-
+const Scalar no_intersection = -1;
 /// \fn Point(Scalar x, Scalar y, Scalar z)
 /// \brief Constructor for Point
 /// \param x x coordinate

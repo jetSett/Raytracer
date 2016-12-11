@@ -3,6 +3,7 @@
 
 #include "Ray.hpp"
 
+
 class IShape {
 
 public:
@@ -11,10 +12,11 @@ public:
 
     /// \fn intersect
     /// \brief show if the Shape is intersecting a ray
-    /// \return true if there is an intersection, else false
-    /// \arg[in] ray the ray the shape is intersecting
-    /// \arg[out] out if there is an intersection, the point of the closest intersection, else this argument is not changed
-    virtual bool intersect(const Ray& ray, Point& out) const = 0;
+    /// \return the argument of the closest point of intersection if there is one, else the constant no_intersection
+    /// \warning to test is there is an intersection, compare to no_intersection without any operation !
+    /// \arg ray the ray the shape is intersecting
+    virtual Scalar intersect(const Ray& ray) const = 0;
 };
+
 
 #endif

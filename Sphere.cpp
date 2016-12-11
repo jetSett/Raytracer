@@ -9,24 +9,21 @@ bool Sphere::intersect(const Ray& ray, Point& out) const {
     Scalar reduced_discrim = (scalarProduct*scalarProduct - squaredNormD*(  fromTo(ray.origin, _center).squaredNorm() - _radius*_radius   ) );
 
     if (reduced_discrim < 0)
-      return false;
+      return no_intersection;
 
     if(reduced_discrim == 0) {
       Scalar t = scalarProduct/squaredNormD;
-      out = ray.getPoint(t);
-      return true;
+      return t;
     }
 
     Scalar t1 = (scalarProduct + sqrt(reduced_discrim))/squaredNormD;
     Scalar t2 = (scalarProduct - sqrt(reduced_discrim))/squaredNormD;
 
     if (t1 < 0 and t2 < 0)
-      return false;
+      return no_intersection;
 
     if (t1 < 0 || t1 > t2)
-      out = ray.getPoint(t2);
+      return t2;
     else if (t2  < 0 || t2 < t1)
-      out = ray.getPoint(t1);
-
-    return true;
+      return t1;
 }

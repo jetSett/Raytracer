@@ -40,4 +40,9 @@ Vect3 fromTo(Point, Point);
 
 extern const Point absolut_origin;
 
+
+///\def no_intersection
+///\brief a constant returned if there is no intersection
+extern const Scalar no_intersection;
+
 #endif
