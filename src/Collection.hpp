@@ -13,6 +13,7 @@ public:
 
   Collection() = default;
 
+  void addShape(IShape*);
   Scalar intersect(const Ray&) const;
 
 private:

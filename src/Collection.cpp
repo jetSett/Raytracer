@@ -1,5 +1,9 @@
 #include "Collection.hpp"
 
+void Collection::addShape(IShape* shape) {
+    _shapes.push_back(shape);
+}
+
 Scalar Collection::intersect(const Ray& ray) const {
     Scalar tMax = no_intersection;
     for (const auto& shape : _shapes) {
