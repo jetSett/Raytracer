@@ -1,6 +1,6 @@
 #include "SceneDisplayer.hpp"
 
-SceneDisplayer::SceneDisplayer(unsigned int width, unsigned int height):
+SceneDisplayer::SceneDisplayer(size_t width, size_t height):
     _width(width), _height(height), _image(), _texture(), _sprite() {}
 
 size_t SceneDisplayer::width() const {
