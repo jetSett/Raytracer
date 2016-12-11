@@ -19,6 +19,23 @@ using Scalar = double;
 /// See Eigen::Matrix<Scalar, 3, 1> for more documentation
 using Vect3 = Eigen::Matrix<Scalar, 3, 1>;
 
+
+/// \def EPSILON
+/// \brief a little value used to determine if something is equal to zero
+const Scalar EPSILON = 0.000001;
+
+/// \fn equal_zero
+/// \brief test if a Scalar is very near from zero
+bool equal_zero(Scalar);
+
+/// \fn negative
+/// \fn test if a scalar is negative (< -EPSILON)
+bool negative(Scalar);
+
+/// \fn positive
+/// \fn test if a scalar is positive (> -EPSILON)
+bool positive(Scalar);
+
 /// \struct Point Primitives.hpp
 /// \brief Point in 3D space
 struct Point {

@@ -8,10 +8,10 @@ Scalar Sphere::intersect(const Ray& ray) const {
     Scalar squaredNormD = ray.direction.squaredNorm();
     Scalar reduced_discrim = (scalarProduct*scalarProduct - squaredNormD*(  fromTo(ray.origin, _center).squaredNorm() - _radius*_radius   ) );
 
-    if (reduced_discrim < 0)
+    if (negative(reduced_discrim))
       return no_intersection;
 
-    if(reduced_discrim == 0) {
+    if(equal_zero(reduced_discrim)) {
       Scalar t = scalarProduct/squaredNormD;
       return t;
     }

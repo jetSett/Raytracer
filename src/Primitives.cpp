@@ -5,6 +5,17 @@
 const Point absolut_origin(Scalar(0), Scalar(0), Scalar(0));
 const Scalar no_intersection = -1;
 
+bool equal_zero(Scalar s){
+    return (s < EPSILON) && (s> -EPSILON);
+}
+
+bool negative(Scalar s){
+    return s< (-EPSILON);
+}
+
+bool positive(Scalar s){
+    return s > EPSILON;
+}
 
 Point::Point(Scalar _x, Scalar _y, Scalar _z):
     x(_x), y(_y), z(_z)
