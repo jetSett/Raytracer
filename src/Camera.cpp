@@ -14,7 +14,7 @@ Ray Camera::getRay(unsigned int linePixel, unsigned int columnPixel) const {
     rayOrigin += Vect3(line, column, Scalar(0));
 
     Point rayTarget(_position);
-    rayTarget += Vect3(line*_gammaWidth, column*_gammaHeight, farfarAway));
+    rayTarget += Vect3(line*_gammaWidth, column*_gammaHeight, farfarAway);
 
     return Ray(rayOrigin, fromTo(rayOrigin, rayTarget));
 }
