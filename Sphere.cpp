@@ -2,7 +2,7 @@
 
 Sphere::Sphere(Point center, Scalar radius) : _center(center), _radius(radius){}
 
-bool Sphere::intersect(const Ray& ray, Point& out) const {
+Scalar Sphere::intersect(const Ray& ray) const {
     // the equation to solve is : f(t) = (t**2)*(||d||)**2 -2*t*<d, OA> + ||OA||**2 - R**2 = 0
     Scalar scalarProduct = ray.direction.dot(fromTo(ray.origin, _center));
     Scalar squaredNormD = ray.direction.squaredNorm();
