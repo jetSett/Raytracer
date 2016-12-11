@@ -2,7 +2,7 @@
 
 #include <vector>
 
-RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer):
+RaytracerEngine::RaytracerEngine(const Collection& scene, SceneDisplayer& sceneDisplayer):
     _scene(scene), _sceneDisplayer(sceneDisplayer) {}
 
 void RaytracerEngine::updateScreen(uint32_t backgroundColor, const Camera& camera) {

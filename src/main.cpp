@@ -19,7 +19,7 @@ int main(int, char * []) {
                 window.close();
         }
 
-        window.clear();
+        window.clear(sf::Color::White);
         window.draw(displayer);
         window.display();
     }
