@@ -9,7 +9,7 @@ void RaytracerEngine::updateScreen(uint32_t backgroundColor) {
     std::vector<uint32_t> screen(_sceneDisplayer.width()*_sceneDisplayer.height(), backgroundColor);
     for (unsigned int line = 0; line < _sceneDisplayer.height(); ++line) {
         for (unsigned int column = 0; column < _sceneDisplayer.width(); ++column) {
-            // TODO something
+            // Ray ray(absolut_origin, );
         }
     }
     _sceneDisplayer.update(screen);
