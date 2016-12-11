@@ -3,6 +3,7 @@
 
 #include "Scene.hpp"
 #include "SceneDisplayer.hpp"
+#include "Camera.hpp"
 
 class RaytracerEngine {
 
