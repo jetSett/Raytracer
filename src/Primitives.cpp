@@ -4,6 +4,7 @@
 
 const Point absolut_origin(Scalar(0), Scalar(0), Scalar(0));
 const Scalar no_intersection = -1;
+const Scalar EPSILON = 0.000001;
 
 bool equal_zero(Scalar s){
     return (s < EPSILON) && (s> -EPSILON);
