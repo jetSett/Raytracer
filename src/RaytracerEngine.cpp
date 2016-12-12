@@ -16,7 +16,7 @@ void RaytracerEngine::updateScreen(uint32_t backgroundColor, const Camera& camer
                 continue ;
 
             t /= Scalar(1000);
-            uint32_t color = 0xFF*(1 - t) + (0xFF << (3 * 8));
+            uint32_t color = 0xFF*(1-t)*(1-t) + (0xFF << (3 * 8));
 
             screen[line*_sceneDisplayer.width() + column] = color;
         }

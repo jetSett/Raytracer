@@ -23,7 +23,7 @@ int main(int, char * []) {
     RaytracerEngine engine(collection, displayer);
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
-    engine.updateScreen(0xFFFF00FF, camera);
+    engine.updateScreen(0xFFFFFFFF, camera);
     // Render Loop
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer 1.0");
