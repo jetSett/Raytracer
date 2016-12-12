@@ -17,26 +17,29 @@ int main(int, char * []) {
     ShapeManager& shapeManager = ShapeManager::getInstance();
     Collection collection;
     collection.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
+    collection.addShape(shapeManager.createShape("Little ball", new Sphere(absolut_origin+Vect3(0, 200, 200), 10)));
 
     SceneDisplayer displayer(width, height);
     RaytracerEngine engine(collection, displayer);
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
-    engine.updateScreen(0xFFFFFFFF, camera);
+    engine.updateScreen(0xFFFF00FF, camera);
     // Render Loop
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer 1.0");
 
     while (window.isOpen()) {
+
+        window.clear();
+        window.draw(displayer);
+        window.display();
+
         sf::Event event;
         if(window.waitEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
 
-        window.clear();
-        window.draw(displayer);
-        window.display();
     }
 
     return EXIT_SUCCESS;
