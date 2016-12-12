@@ -1,6 +1,6 @@
 #include "Triangle.hpp"
 
-Triangle::Triangle(Point v1, Point v2, Point v3){
+Triangle::Triangle(Point v1, Point v2, Point v3) : _v1(v1), _v2(v2), _v3(v3){
 
 }
 
@@ -13,19 +13,22 @@ Scalar Triangle::intersect(const Ray& ray) const {
     Vect3 P = D.cross(e2);
 
     Scalar det = e1.dot(P);
-    if(equal_zero(det))
+    if(equal_zero(det)){
         return no_intersection;
+    }
 
     Vect3 T = fromTo(_v1, ray.origin);
     Scalar u = T.dot(P)/det;
-    if(negative(u) or u > 1)
+    if(negative(u) or u > 1){
         return no_intersection;
+    }
 
     Vect3 Q = T.cross(e1);
 
     Scalar v = D.dot(Q)/det;
-    if(negative(v) or u+v > 1)
+    if(negative(v) or u+v > 1){
         return no_intersection;
+    }
 
     Scalar t = e2.dot(Q)/det;
     if(positive(t))
