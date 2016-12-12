@@ -8,11 +8,12 @@ Comment faire fonctionner le code :
 
 ## installation de la SFML
 Il faut installer le paquet libsfml-dev
+il faut aussi installer le paquet libeigen3-dev
 Il faut créer le fichier FindSFML.cmake disponible à l'adresse suivante : https://github.com/SFML/SFML/blob/master/cmake/Modules/FindSFML.cmake dans le dossier /usr/share/cmake<votre version>/Modules
 
 ## To-do list
 
-- [ ] Faire un moteur basique comprenant :
+- [x] Faire un moteur basique comprenant :
 	- un modèle de camera simple (double plan)
 	- l'intersection rayon/sphère
 	- affichage en fonction de la profondeur d'un objet
