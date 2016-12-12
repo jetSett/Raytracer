@@ -18,6 +18,8 @@ public:
 
 private:
 
+    uint32_t updatePixel(unsigned int, unsigned int, uint32_t, const Camera&) const;
+
     const Collection& _collection;
     SceneDisplayer& _sceneDisplayer;
 };

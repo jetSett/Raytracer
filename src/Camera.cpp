@@ -1,6 +1,6 @@
 #include "Camera.hpp"
 
-static const Scalar farfarAway = Scalar(1000);
+const Scalar Camera::farfarAway = Scalar(1000);
 
 Camera::Camera(const Point& position, const Vect3& direction, size_t width, size_t height, Scalar gammaWidth, Scalar gammaHeight):
     _position(position), _direction(direction*(1./direction.norm())),

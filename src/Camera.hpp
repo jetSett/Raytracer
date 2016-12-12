@@ -31,6 +31,8 @@ public:
     /// \todo : fix getRay for other directions
     Ray getRay(unsigned int line, unsigned int column) const;
 
+    static const Scalar farfarAway;
+
 private:
 
     Point _position;
