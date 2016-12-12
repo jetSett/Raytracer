@@ -1,3 +1,0 @@
-/media/guillaume/Data/Guillaume Coiffier/Documents/C++/Raytracer/CMakeFiles/edit_cache.dir
-/media/guillaume/Data/Guillaume Coiffier/Documents/C++/Raytracer/CMakeFiles/rebuild_cache.dir
-/media/guillaume/Data/Guillaume Coiffier/Documents/C++/Raytracer/CMakeFiles/Raytracer.dir
