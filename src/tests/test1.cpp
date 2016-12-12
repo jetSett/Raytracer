@@ -1,14 +1,6 @@
-#include <cstdlib>
+#include "../Test.hpp"
 
-#include <SFML/Graphics.hpp>
-
-#include "SceneDisplayer.hpp"
-#include "RaytracerEngine.hpp"
-#include "ShapeManager.hpp"
-#include "Sphere.hpp"
-#include "Plane.hpp"
-
-int main(int, char * []) {
+void test1(){
     const unsigned int width = 1024;
     const unsigned int height = 512;
 
@@ -16,14 +8,16 @@ int main(int, char * []) {
 
     ShapeManager& shapeManager = ShapeManager::getInstance();
     Collection collection;
-    collection.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
-    collection.addShape(shapeManager.createShape("Little ball", new Sphere(absolut_origin+Vect3(0, 200, 200), 10)));
+    // collection.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
+    collection.addShape(shapeManager.createShape("Triangle", new Triangle(  Point(0, 0, 1000),
+                                                                            Point(200, 0, 500),
+                                                                            Point(200, 200, 200))));
 
     SceneDisplayer displayer(width, height);
     RaytracerEngine engine(collection, displayer);
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
-    engine.updateScreen(0xFFFF00FF, camera);
+    engine.updateScreen(0x00000000, camera);
     // Render Loop
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer 1.0");
@@ -42,5 +36,4 @@ int main(int, char * []) {
 
     }
 
-    return EXIT_SUCCESS;
 }
