@@ -36,3 +36,18 @@ Scalar Triangle::intersect(const Ray& ray) const {
 
     return no_intersection;
 }
+
+bool good_side(Point M, Point A, Point B){
+    return positive( (fromTo(A, M).cross(fromTo(A, M))).dot( fromTo(A, M).cross(fromTo(A, B)) ) );
+}
+
+bool Triangle::contains(Point M) const{
+    return  good_side(M, _v1, _v3) and good_side(M, _v3, _v2) and good_side(M, _v2, _v1);
+}
+
+Vect3 Triangle::normal(Point M) const{
+    if(not contains(M)){
+        return Vect3(0, 0, 0);
+    }
+    return (fromTo(_v1, _v2).cross( fromTo(_v1, _v3) ) ).normalized();
+}
