@@ -22,11 +22,16 @@ uint32_t RaytracerEngine::updatePixel(
     uint32_t backgroundColor, const Camera& camera) const {
 
     Ray ray = camera.getRay(line, column);
-    Scalar t = _scene.findIntersection(ray);
-    if (t == no_intersection)
-        return backgroundColor;
+    OpScalar t = _scene.findIntersection(ray);
 
-    t /= Scalar(Camera::farfarAway);
-    uint32_t color = 0xFF*(1-t)*(1-t) + (0xFF << (3 * 8));
-    return color;
+    return t.ifelseOpReturn<uint32_t>(
+    [&](Scalar t){
+        t /= Scalar(Camera::farfarAway);
+        uint32_t color = 0xFF*(1-t)*(1-t) + (0xFF << (3 * 8));
+        return color;
+    },
+    [&](){
+        return backgroundColor;
+    });
+
 }
