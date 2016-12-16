@@ -1,3 +1,6 @@
+#ifndef OPTIONAL_HPP
+#define OPTIONAL_HPP
+
 #include <iostream>
 #include <memory>
 
@@ -52,6 +55,15 @@ public:
 	bool ok() const
 	{
 		return _isOk;
+	}
+
+	void assign(T t){
+		if(_isOk)
+		{
+			_t.~T();
+		}
+		_isOk = true;
+		_t = t;
 	}
 
 
@@ -156,3 +168,5 @@ public:
 		}
 	}
 };
+
+#endif
