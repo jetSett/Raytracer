@@ -7,6 +7,8 @@
 
 #include "Eigen/Dense"
 
+#include "Optional.hpp"
+
 /// \struct Scalar Primitives.hpp
 /// \brief Scalar type
 ///
@@ -19,6 +21,9 @@ using Scalar = double;
 /// See Eigen::Matrix<Scalar, 3, 1> for more documentation
 using Vect3 = Eigen::Matrix<Scalar, 3, 1>;
 
+
+using OpVect3 = Optional<Vect3>;
+using OpScalar = Optional<Scalar>;
 
 /// \def EPSILON
 /// \brief a little value used to determine if something is equal to zero

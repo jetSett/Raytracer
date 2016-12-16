@@ -7,6 +7,7 @@ void test1(){
     // RaytracerEngine
 
     ShapeManager& shapeManager = ShapeManager::getInstance();
+
     Scene scene;
     scene.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
     scene.addShape(shapeManager.createShape("Triangle",
@@ -15,7 +16,7 @@ void test1(){
     SceneDisplayer displayer(width, height);
     RaytracerEngine engine(scene, displayer);
 
-    Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
+    Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 2., 2.);
     engine.updateScreen(0x00000000, camera);
 
     // Render Loop
