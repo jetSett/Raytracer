@@ -11,3 +11,14 @@ Scalar Plane::intersect(const Ray& ray) const{
         return _normal.dot(fromTo(_origin, ray.origin))/prod;
     }
 }
+
+bool Plane::contains(Point p) const{
+    return not equal_zero(_normal.dot(fromTo(_origin, p)));
+}
+
+Vect3 Plane::normal(Point p) const{
+    if (not contains(p)){
+        return Vect3(0, 0, 0);
+    }
+    return _normal.normalized();
+}

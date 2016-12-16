@@ -16,6 +16,9 @@ public:
     /// \fn intersect
     /// \brief get the intersection point with ray
     virtual Scalar intersect(const Ray& ray) const override;
+    virtual bool contains(Point p) const override;
+    virtual Vect3 normal(Point p) const override;
+
 
 private:
 

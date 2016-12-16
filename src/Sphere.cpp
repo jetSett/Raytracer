@@ -27,3 +27,14 @@ Scalar Sphere::intersect(const Ray& ray) const {
 
     return t1;
 }
+
+bool Sphere::contains(Point p) const{
+    return equal(fromTo(_center, p).squaredNorm(), _radius*_radius);
+}
+
+Vect3 Sphere::normal(Point p) const{
+    if(not contains(p)){
+        return Vect3(0, 0, 0);
+    }
+    return fromTo(_center, p).normalized();
+}

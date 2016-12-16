@@ -29,12 +29,16 @@ extern const Scalar EPSILON;
 bool equal_zero(Scalar);
 
 /// \fn negative
-/// \fn test if a scalar is negative (< -EPSILON)
+/// \brief test if a scalar is negative (< -EPSILON)
 bool negative(Scalar);
 
 /// \fn positive
-/// \fn test if a scalar is positive (> -EPSILON)
+/// \brief test if a scalar is positive (> -EPSILON)
 bool positive(Scalar);
+
+/// \fn equal
+/// \brief test if two Scalar are equal (modulo EPSILON)
+bool equal(Scalar, Scalar);
 
 /// \struct Point Primitives.hpp
 /// \brief Point in 3D space

@@ -18,6 +18,10 @@ bool positive(Scalar s){
     return s > EPSILON;
 }
 
+bool equal(Scalar a, Scalar b){
+    return equal_zero(a-b);
+}
+
 Point::Point(Scalar _x, Scalar _y, Scalar _z):
     x(_x), y(_y), z(_z)
     {}
