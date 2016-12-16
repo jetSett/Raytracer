@@ -8,7 +8,7 @@ void test1(){
 
     ShapeManager& shapeManager = ShapeManager::getInstance();
     Scene scene;
-    // scene.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
+    scene.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
     scene.addShape(shapeManager.createShape("Triangle",
         new Triangle(  Point(0, 0, 1000), Point(200, 0, 500), Point(200, 200, 200))));
 
@@ -17,8 +17,8 @@ void test1(){
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
     engine.updateScreen(0x00000000, camera);
-    // Render Loop
 
+    // Render Loop
     sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer 1.0");
 
     while (window.isOpen()) {
@@ -32,7 +32,5 @@ void test1(){
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
     }
-
 }
