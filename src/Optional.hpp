@@ -167,6 +167,65 @@ public:
 			g();
 		}
 	}
+
+	/// \fn ifelseOpReturn
+	/// \brief execute the function f (which takes in parameter a T object) if the object is initialised and return it result, else execute the function g and return its result
+	/// \warning Those functions must return the same type
+	/// \example
+	/// 	Optional<int> empty;
+	/// 	notEmpty.ifelseOpReturn([] (int &i)
+	/// 	{
+	/// 		i *= 2;
+	/// 		std::cout << i << " est valide !" << std::endl;
+	///			return i*3;
+	///		},
+	///		[] (){
+	///			std::cout << "non initilisé" << std::endl;
+	///			return 0;
+	///		});
+	template<typename F, typename G, typename H>
+	H ifelseOpReturn(F f, G g) &
+	{
+		if(_isOk)
+		{
+			f(_t);
+		}else{
+			g();
+		}
+	}
+
+	template<typename H, typename F, typename G>
+	H ifelseOpReturn(F f, G g) &&
+	{
+		if(_isOk)
+		{
+			return f(std::move(_t));
+		}else{
+			return g();
+		}
+	}
+
+	template<typename H, typename F, typename G>
+	H ifelseOpReturn(F f, G g) const &
+	{
+		if(_isOk)
+		{
+			return f(_t);
+		}else{
+			return g();
+		}
+	}
+
+	template<typename H, typename F, typename G>
+	H ifelseOpReturn(F f, G g) const &&
+	{
+		if(_isOk)
+		{
+			return f(std::move(_t));
+		}else{
+			return g();
+		}
+	}
 };
 
 #endif
