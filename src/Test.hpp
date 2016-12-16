@@ -9,6 +9,7 @@
 #include "ShapeManager.hpp"
 #include "Sphere.hpp"
 #include "Triangle.hpp"
+#include "Scene.hpp"
 
 void test1(); // Joel
 

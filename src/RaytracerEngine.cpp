@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 
-RaytracerEngine::RaytracerEngine(const Collection& collection, SceneDisplayer& sceneDisplayer):
-    _collection(collection), _sceneDisplayer(sceneDisplayer) {}
+RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer):
+    _scene(scene), _sceneDisplayer(sceneDisplayer) {}
 
 void RaytracerEngine::updateScreen(uint32_t backgroundColor, const Camera& camera) {
     std::vector<uint32_t> screen(_sceneDisplayer.width()*_sceneDisplayer.height(), backgroundColor);
@@ -17,10 +17,12 @@ void RaytracerEngine::updateScreen(uint32_t backgroundColor, const Camera& camer
     _sceneDisplayer.update(screen);
 }
 
-uint32_t RaytracerEngine::updatePixel(unsigned int line, unsigned int column, uint32_t backgroundColor, const Camera& camera) const {
-    Ray ray = camera.getRay(line, column);
-    Scalar t = _collection.intersect(ray);
+uint32_t RaytracerEngine::updatePixel(
+    unsigned int line, unsigned int column,
+    uint32_t backgroundColor, const Camera& camera) const {
 
+    Ray ray = camera.getRay(line, column);
+    Scalar t = _scene.findIntersection(ray);
     if (t == no_intersection)
         return backgroundColor;
 

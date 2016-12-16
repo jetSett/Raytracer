@@ -7,14 +7,13 @@ void test1(){
     // RaytracerEngine
 
     ShapeManager& shapeManager = ShapeManager::getInstance();
-    Collection collection;
-    // collection.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
-    collection.addShape(shapeManager.createShape("Triangle", new Triangle(  Point(0, 0, 1000),
-                                                                            Point(200, 0, 500),
-                                                                            Point(200, 200, 200))));
+    Scene scene;
+    // scene.addShape(shapeManager.createShape("Big ball", new Sphere(absolut_origin+Vect3(0, 0, 500), 250)));
+    scene.addShape(shapeManager.createShape("Triangle",
+        new Triangle(  Point(0, 0, 1000), Point(200, 0, 500), Point(200, 200, 200))));
 
     SceneDisplayer displayer(width, height);
-    RaytracerEngine engine(collection, displayer);
+    RaytracerEngine engine(scene, displayer);
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
     engine.updateScreen(0x00000000, camera);
