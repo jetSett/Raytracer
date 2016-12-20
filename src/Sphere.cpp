@@ -28,13 +28,12 @@ OpScalar Sphere::intersect(const Ray& ray) const {
     return OpScalar(t1);
 }
 
-bool Sphere::contains(Point p) const{
+bool Sphere::contains(Point p) const {
     return equal(fromTo(_center, p).squaredNorm(), _radius*_radius);
 }
 
-OpVect3 Sphere::normal(Point p) const{
-    if(not contains(p)){
+OpVect3 Sphere::normal(Point p) const {
+    if(not contains(p))
         return OpVect3();
-    }
     return OpVect3(fromTo(_center, p).normalized());
 }
