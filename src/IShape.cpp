@@ -1,5 +1,8 @@
 #include "IShape.hpp"
 
-OpCollision getCollision(const Ray& ray) const {
-    return OpCollision(Collision(intersect(ray), this));
+OpCollision findCollision(const Ray& ray) const {
+    OpScalar t = intersect(ray);
+    return t.ifelseOpReturn<OpCollision>(
+        [&](Scalar& t){ return OpCollision(Collision(, this)); },
+        [&]()         { return OpCollision();                  }
 }
