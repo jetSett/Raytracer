@@ -10,11 +10,10 @@ public:
     /// \fn Triangle
     /// \arg the vertices of our triangle
     Triangle(Point v1, Point v2, Point v3);
-
-    virtual OpScalar intersect(const Ray&) const override;
     virtual bool contains(Point p) const override;
     virtual OpVect3 normal(Point p) const override;
-
+protected:
+    virtual OpScalar intersect(const Ray&) const override;
 private:
     Point _v1, _v2, _v3;
 };
