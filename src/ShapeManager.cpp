@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ShapeManager.hpp"
 
+// DEPRECATED
 
 ShapeManager ShapeManager::_instance = ShapeManager();
 

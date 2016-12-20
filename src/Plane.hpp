@@ -13,7 +13,6 @@ public:
     Plane(Point origin, Vect3 normal);
     virtual bool contains(Point p) const override;
     virtual OpVect3 normal(Point p) const override;
-protected:
     virtual OpScalar intersect(const Ray& ray) const override;
 private:
     Point _origin;

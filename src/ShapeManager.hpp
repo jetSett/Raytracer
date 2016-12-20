@@ -7,6 +7,7 @@
 #include <string>
 #include "IShape.hpp"
 
+// DEPRECATED
 
 /// \class ShapeManager
 /// \brief Manage the creation, deletion, access to all shape
