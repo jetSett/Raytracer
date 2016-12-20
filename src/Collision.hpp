@@ -3,15 +3,16 @@
 
 #include "Primitives.hpp"
 #include "Optional.hpp"
+#include "IShape.hpp"
 
 class Collision {
 
 public:
 
-    Collision(Scalar, const Object* const);
+    Collision(Scalar, const IShape* const);
 
     Scalar t;
-    const Object* const target;
+    const IShape* const target;
 };
 
 using OpCollision = Optional<Collision>;

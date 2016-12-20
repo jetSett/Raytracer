@@ -28,7 +28,7 @@ public:
 
 protected:
 
-    virtual OpCollision intersect(const Ray& ray) const = 0;
+    virtual OpScalar intersect(const Ray& ray) const = 0;
 };
 
 
