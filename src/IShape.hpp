@@ -3,7 +3,7 @@
 
 #include "Optional.hpp"
 #include "Ray.hpp"
-
+#include "Collision.hpp"
 
 class IShape {
 
@@ -15,7 +15,7 @@ public:
     /// \brief show if the Shape is intersecting a ray
     /// \return the argument of the closest point of intersection if there is one
     /// \arg ray the ray the shape is intersecting
-    virtual OpScalar intersect(const Ray& ray) const = 0;
+    virtual OpCollision intersect(const Ray& ray) const = 0;
 
     /// \fn contains
     /// \brief show if a point is in the shape
