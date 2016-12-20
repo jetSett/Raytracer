@@ -12,7 +12,7 @@ public:
     Scene& operator=(const Scene&) = delete;
 
     void addShape(IShape*);
-    OpScalar findCollision(const Ray&) const;
+    OpCollision findCollision(const Ray&) const;
 
 private:
 

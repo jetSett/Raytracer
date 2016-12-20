@@ -26,7 +26,7 @@ uint32_t RaytracerEngine::updatePixel(
     OpCollision collision = _scene.findCollision(ray);
 
     return collision.ifelseOpReturn<uint32_t>(
-    [&](Scalar collision){
+    [&](const Collision& collision){
         Scalar t = collision.t / Scalar(Camera::farfarAway);
         uint32_t color = 0xFF*(1-t)*(1-t);
         return color;

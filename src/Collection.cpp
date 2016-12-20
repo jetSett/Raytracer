@@ -4,20 +4,17 @@ void Collection::addShape(IShape* shape) {
     _shapes.push_back(shape);
 }
 
-OpScalar Collection::intersect(const Ray& ray) const {
-    OpScalar tMax;
+OpCollision Collection::findCollision(const Ray& ray) const {
+    OpCollision closest;
     for (const auto& shape : _shapes) {
-        shape->intersect(ray).ifOp( [&] (Scalar t){ //si il y a intersection, on effectue le morceau de code
-
-            tMax.ifelseOp([&](Scalar& tM){
-                if(tM > t){
-                    tM = t;
-                }
+        shape->findCollision(ray).ifOp([&](const Collision& collision){ //si il y a intersection, on effectue le morceau de code
+            closest.ifelseOp([&](Collision& closest){
+                if(closest.t > collision.t)
+                    closest = collision;
             }, [&](){
-                tMax.assign(t);
+                closest.assign(collision);
             });
-
         });
     }
-    return tMax;
+    return closest;
 }

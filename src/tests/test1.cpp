@@ -18,7 +18,7 @@ void test1(){
     SceneDisplayer displayer(width, height);
     RaytracerEngine engine(scene, displayer);
 
-    Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 2., 1.);
+    Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
     engine.updateScreen(0x00000000, camera);
 
     // Render Loop

@@ -14,7 +14,7 @@ public:
   Collection() = default;
 
   void addShape(IShape*);
-  OpScalar intersect(const Ray&) const;
+  OpCollision findCollision(const Ray&) const;
 
 private:
 
