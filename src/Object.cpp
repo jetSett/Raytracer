@@ -7,11 +7,11 @@ Object::Object(IShape* shape, Material* material):
 
 OpCollision Object::findCollision(const Ray& ray) const {
     OpScalar t = _shape->intersect(ray);
-    t.ifelseOpReturn<OpCollision>([&](Scalar t){
-        return OpCollision(Collision(t, this));
-    },[](){
-        return OpCollision();
+    OpCollision collision;
+    t.ifOp([&](Scalar t){
+        collision.assign(Collision(t, this));
     });
+    return collision;
 }
 
 const IShape& Object::getShape() const {

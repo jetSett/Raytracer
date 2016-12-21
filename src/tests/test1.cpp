@@ -7,15 +7,18 @@ void test1(){
     const unsigned int height = 512;
 
     // RaytracerEngine
-    std::unique_ptr<IShape> a(new Sphere(absolut_origin+Vect3(0, 0, 500), 250));
+    std::unique_ptr<IShape> a(new Sphere(Point(0, 0, 500), 250));
     std::unique_ptr<IShape> b(new Triangle(Point(0, 0, 1000), Point(200, 0, 500), Point(200, 200, 200)));
-    std::unique_ptr<IShape> c(new Sphere(absolut_origin+Vect3(100, -50, 100), 50));
-    std::unique_ptr<IShape> d(new Sphere(absolut_origin+Vect3(-200, 150, 400), 100));
-    std::unique_ptr<Material> m(new Material(0x00FFFFFF));
-    std::unique_ptr<Object> s(new Object(a.get(), m.get()));
-    std::unique_ptr<Object> t(new Object(b.get(), m.get()));
-    std::unique_ptr<Object> u(new Object(c.get(), m.get()));
-    std::unique_ptr<Object> v(new Object(d.get(), m.get()));
+    std::unique_ptr<IShape> c(new Sphere(Point(100, -50, 100), 50));
+    std::unique_ptr<IShape> d(new Sphere(Point(-200, 150, 400), 100));
+    std::unique_ptr<Material> red(new Material(0x000000FF));
+    std::unique_ptr<Material> green(new Material(0x0000FF00));
+    std::unique_ptr<Material> blue(new Material(0x00FF0000));
+    std::unique_ptr<Material> white(new Material(0x00000000));
+    std::unique_ptr<Object> s(new Object(a.get(), red.get()));
+    std::unique_ptr<Object> t(new Object(b.get(), green.get()));
+    std::unique_ptr<Object> u(new Object(c.get(), white.get()));
+    std::unique_ptr<Object> v(new Object(d.get(), blue.get()));
 
     Scene scene;
     scene.addObject(s.get());
