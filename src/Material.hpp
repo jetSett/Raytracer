@@ -1,12 +1,12 @@
 #ifndef MATERIAL_HPP
 #define MATERIAL_HPP
 
-#include <cstdint>
+#include "Color.hpp"
 
 class Material {
 public:
-    Material(uint32_t);
-    uint32_t color;
+    Material(Color);
+    Color color;
 };
 
 #endif

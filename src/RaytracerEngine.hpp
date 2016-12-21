@@ -4,22 +4,17 @@
 #include "Scene.hpp"
 #include "SceneDisplayer.hpp"
 #include "Camera.hpp"
+#include "Color.hpp"
 
 class RaytracerEngine {
-
 public:
-
     RaytracerEngine() = delete;
     RaytracerEngine(const RaytracerEngine&) = delete;
     RaytracerEngine& operator=(const RaytracerEngine&) = delete;
     RaytracerEngine(const Scene&, SceneDisplayer&);
-
-    void updateScreen(uint32_t, const Camera&);
-
+    void updateScreen(Color, const Camera&);
 private:
-
-    uint32_t updatePixel(unsigned int, unsigned int, uint32_t, const Camera&) const;
-
+    Color getPixelColor(unsigned int, unsigned int, Color, const Camera&) const;
     const Scene& _scene;
     SceneDisplayer& _sceneDisplayer;
 };

@@ -8,29 +8,37 @@ void test1(){
 
     // RaytracerEngine
     std::unique_ptr<IShape> a(new Sphere(Point(0, 0, 500), 250));
-    std::unique_ptr<IShape> b(new Triangle(Point(0, 0, 1000), Point(200, 0, 500), Point(200, 200, 200)));
+    std::unique_ptr<IShape> b(new Triangle(Point(0, 0, 1000), Point(300, -220, 500), Point(100, 200, 100)));
     std::unique_ptr<IShape> c(new Sphere(Point(100, -50, 100), 50));
     std::unique_ptr<IShape> d(new Sphere(Point(-200, 150, 400), 100));
-    std::unique_ptr<Material> red(new Material(0x000000FF));
-    std::unique_ptr<Material> green(new Material(0x0000FF00));
-    std::unique_ptr<Material> blue(new Material(0x00FF0000));
-    std::unique_ptr<Material> white(new Material(0x00000000));
+    std::unique_ptr<IShape> e(new Triangle(Point(-500, -200, 100), Point(-300, -180, 100), Point(-400, 0, 100)));
+    std::unique_ptr<IShape> f(new Sphere(Point(100, -50, 100) + Vect3(-40, 75, 0), 50));
+    std::unique_ptr<Material> red(new Material(Color::Red));
+    std::unique_ptr<Material> green(new Material(Color::Green));
+    std::unique_ptr<Material> blue(new Material(Color::Blue));
+    std::unique_ptr<Material> yellow(new Material(Color::Yellow));
+    std::unique_ptr<Material> cyan(new Material(Color::Cyan));
+    std::unique_ptr<Material> magenta(new Material(Color::Magenta));
     std::unique_ptr<Object> s(new Object(a.get(), red.get()));
     std::unique_ptr<Object> t(new Object(b.get(), green.get()));
-    std::unique_ptr<Object> u(new Object(c.get(), white.get()));
+    std::unique_ptr<Object> u(new Object(c.get(), yellow.get()));
     std::unique_ptr<Object> v(new Object(d.get(), blue.get()));
+    std::unique_ptr<Object> w(new Object(e.get(), cyan.get()));
+    std::unique_ptr<Object> x(new Object(f.get(), magenta.get()));
 
     Scene scene;
     scene.addObject(s.get());
     scene.addObject(t.get());
     scene.addObject(u.get());
     scene.addObject(v.get());
+    scene.addObject(w.get());
+    scene.addObject(x.get());
 
     SceneDisplayer displayer(width, height);
     RaytracerEngine engine(scene, displayer);
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
-    engine.updateScreen(0x00000000, camera);
+    engine.updateScreen(Color::Black, camera);
 
     // Render Loop
     sf::RenderWindow window(sf::VideoMode(width, height), "Raytracer 1.0");
