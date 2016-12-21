@@ -7,7 +7,7 @@ OpScalar Plane::intersect(const Ray& ray) const {
     Scalar prod = _normal.dot(ray.direction);
     if(equal_zero(prod))
         return OpScalar();
-        return OpScalar(_normal.dot(fromTo(_origin, ray.origin))/prod);
+    return OpScalar(_normal.dot(fromTo(_origin, ray.origin))/prod);
 }
 
 bool Plane::contains(Point p) const {

@@ -1,6 +1,8 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
+#include "Object.hpp"
+
 class Scene {
 
 public:
@@ -9,12 +11,12 @@ public:
     Scene(const Scene&) = delete;
     Scene& operator=(const Scene&) = delete;
 
-    void addObject(const Object&);
+    void addObject(Object*);
     OpCollision findCollision(const Ray&) const;
 
 private:
 
-    std::vector<Object> _data;
+    std::vector<Object*> _data;
 };
 
 #endif
