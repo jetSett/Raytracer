@@ -1,56 +1,52 @@
-#ifndef SHAPEMANAGER_HPP
-#define SHAPEMANAGER_HPP
+#ifndef RESOURCE_MANAGER_HPP
+#define RESOURCE_MANAGER_HPP
 
 #include <memory>
 #include <unordered_map>
 #include <string>
 #include <iostream>
 
-#include "IShape.hpp"
-
-// DEPRECATED
-
 /// \class ShapeManager
 /// \brief Manage the creation, deletion, access to all shape
 /// \note Every shape created must be created with the instance of ShapeManager
-class ShapeManager{
+template<class T>
+class ResourceManager {
 public:
 
     /// \fn getInstance
     /// \brief an implementation of pattern singleton : you have to call this function in order to use the ShapeManager
-    static ShapeManager& getInstance() {
+    static ResourceManager<T>& getInstance() {
         return _instance;
     }
 
-    ~ShapeManager() {
-        std::cout << "Destructing ShapeManager" << std::endl;
-        for(auto a : _shapeList) {
+    ~ResourceManager<T>() {
+        std::cout << "Destructing ResourceManager" << std::endl;
+        for(auto a : _resourceList) {
             delete a.second;
         }
     }
-
 
     /// \fn createShape
     /// \brief declare and create a shape
     /// \arg name the name associated to your shape
     /// \arg shape the newly created shape
     /// \example std::shared_ptr<IShape> s = ShapeManager::getInstance().createShape("foo", new Sphere(Vect3(0., 0., 0.), 1.));
-    IShape* createShape(const std::string& name, IShape* shape){
-        if(_shapeList.find(name) != _shapeList.end()){
-            delete _shapeList[name];
+    T* createShape(const std::string& name, T* shape){
+        if(_resourceList.find(name) != _resourceList.end()){
+            delete _resourceList[name];
         }
-        _shapeList[name] = shape;
-        return _shapeList[name];
+        _resourceList[name] = shape;
+        return _resourceList[name];
     }
 
 private:
-    ShapeManager() {
-        std::cout << "Creating ShapeManager" << std::endl;
+    ResourceManager<T>() {
+        std::cout << "Creating ResourceManager" << std::endl;
     }
 
-    static ShapeManager _instance = ShapeManager();
+    static ResourceManager<T> _instance();
 
-    std::unordered_map<std::string, IShape* > _shapeList;
+    std::unordered_map<std::string, T* > _resourceList;
 };
 
 #endif

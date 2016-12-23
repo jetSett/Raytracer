@@ -6,10 +6,11 @@
 
 #include "SceneDisplayer.hpp"
 #include "RaytracerEngine.hpp"
-#include "ShapeManager.hpp"
 #include "Sphere.hpp"
 #include "Triangle.hpp"
 #include "Scene.hpp"
+
+#include "ResourceManager.hpp"
 
 void test1(); // Joel
 
