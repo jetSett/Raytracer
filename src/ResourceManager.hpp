@@ -42,7 +42,6 @@ public:
         ss << _counter;
         name += ss.str();
 
-        _resources.erase(name);
         _resources[name].reset(resource);
         return _resources[name].get();
     }
