@@ -1,10 +1,12 @@
 #ifndef RESOURCE_MANAGER_HPP
 #define RESOURCE_MANAGER_HPP
 
+#include <cstdlib>
 #include <memory>
 #include <unordered_map>
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <typeinfo>
 
 /// \class ResourceManager
@@ -32,10 +34,16 @@ public:
     /// \brief declare and create a resource
     /// \arg name the name associated to your resource
     /// \arg shape the newly created resource
-    /// \example IShape* s = ResourceManager<IShape>::getInstance().createResource("foo", new Sphere(Vect3(0., 0., 0.), 1.));
-    T* createResource(const std::string& name, T* resource){
+    /// \example IShape* s = ResourceManager<IShape>::getInstance().createResource(new Sphere(Vect3(0., 0., 0.), 1.), "foo");
+    T* createResource(T* resource, std::string name = std::string("")){
+        name += "__number__";
+        _counter += 1;
+        std::ostringstream ss;
+        ss << _counter;
+        name += ss.str();
+
         _resources.erase(name);
-        _resources[name] = resource;
+        _resources[name].reset(resource);
         return _resources[name].get();
     }
 
@@ -45,10 +53,15 @@ private:
     }
 
     static ResourceManager<T> _instance;
+    static int _counter;
 
     std::unordered_map<std::string, std::unique_ptr<T>> _resources;
 };
 
 template<class T>
 ResourceManager<T> ResourceManager<T>::_instance;
+
+template<class T>
+int ResourceManager<T>::_counter(0);
+
 #endif
