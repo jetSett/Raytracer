@@ -1,7 +1,7 @@
 #ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
 
-#include "IShape.hpp"
+#include <Core/IShape.hpp>
 
 /// \class Triangle
 /// \brief represent a triangle

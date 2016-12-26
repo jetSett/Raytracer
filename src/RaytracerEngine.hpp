@@ -2,9 +2,9 @@
 #define RAYTRACER_ENGINE_HPP
 
 #include "Scene.hpp"
-#include "SceneDisplayer.hpp"
-#include "Camera.hpp"
-#include "Color.hpp"
+#include <GUI/SceneDisplayer.hpp>
+#include <Core/Camera.hpp>
+#include <Tools/Color.hpp>
 
 class RaytracerEngine {
 public:

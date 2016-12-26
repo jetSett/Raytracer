@@ -1,8 +1,8 @@
 #ifndef CAMERA_HPP
 #define CAMERA_HPP
 
-#include "Primitives.hpp"
-#include "Ray.hpp"
+#include <Core/Primitives.hpp>
+#include <Core/Ray.hpp>
 
 /// \class Camera
 /// \brief A class to manipulate cameras

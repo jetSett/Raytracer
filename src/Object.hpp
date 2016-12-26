@@ -1,10 +1,10 @@
 #ifndef OBJECT_HPP
 #define OBJECT_HPP
 
-#include "IShape.hpp"
-#include "Material.hpp"
-#include "Collision.hpp"
-#include "Ray.hpp"
+#include <Core/IShape.hpp>
+#include <Core/Material.hpp>
+#include <Core/Collision.hpp>
+#include <Core/Ray.hpp>
 
 class Object {
 

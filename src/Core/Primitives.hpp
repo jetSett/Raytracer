@@ -7,7 +7,7 @@
 
 #include "Eigen/Dense"
 
-#include "Optional.hpp"
+#include <Tools/Optional.hpp>
 
 /// \struct Scalar Primitives.hpp
 /// \brief Scalar type

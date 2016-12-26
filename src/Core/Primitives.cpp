@@ -1,7 +1,5 @@
 #include "Primitives.hpp"
 
-
-
 const Point absolut_origin(Scalar(0), Scalar(0), Scalar(0));
 const Scalar no_intersection = -1;
 const Scalar EPSILON = 0.000001;

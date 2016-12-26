@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-#include "Primitives.hpp"
+#include <Core/Primitives.hpp>
 
 class Color {
 public:

@@ -1,9 +1,9 @@
 #ifndef ISHAPE_HPP
 #define ISHAPE_HPP
 
-#include "Optional.hpp"
-#include "Ray.hpp"
-#include "Collision.hpp"
+#include <Tools/Optional.hpp>
+#include <Core/Ray.hpp>
+#include <Core/Collision.hpp>
 
 class IShape {
 

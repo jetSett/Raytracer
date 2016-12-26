@@ -1,8 +1,8 @@
 #ifndef PLANE_HPP
 #define PLANE_HPP
 
-#include "IShape.hpp"
-#include "Primitives.hpp"
+#include <Core/IShape.hpp>
+#include <Core/Primitives.hpp>
 
 
 

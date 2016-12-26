@@ -1,8 +1,8 @@
 #ifndef SPHERE_HPP
 #define SPHERE_HPP
 
-#include "IShape.hpp"
-#include "Primitives.hpp"
+#include <Core/IShape.hpp>
+#include <Core/Primitives.hpp>
 
 
 /// \class Sphere

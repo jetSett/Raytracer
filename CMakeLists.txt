@@ -21,6 +21,7 @@ add_executable(
 find_package(Eigen3)
 
 INCLUDE_DIRECTORIES ( "${EIGEN3_INCLUDE_DIR}" )
+include_directories( "src/" )
 
 if(CMAKE_COMPILER_IS_GNUCXX)
     add_definitions(-std=c++14)

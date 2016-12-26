@@ -1,8 +1,8 @@
 #ifndef COLLISION_HPP
 #define COLLISION_HPP
 
-#include "Primitives.hpp"
-#include "Optional.hpp"
+#include <Core/Primitives.hpp>
+#include <Tools/Optional.hpp>
 
 class Object;
 
