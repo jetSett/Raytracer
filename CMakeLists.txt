@@ -25,6 +25,7 @@ include_directories( "src/" )
 
 if(CMAKE_COMPILER_IS_GNUCXX)
     add_definitions(-std=c++14)
+    add_definitions(-g)
 endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
