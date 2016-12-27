@@ -3,8 +3,8 @@
 #include "RaytracerEngine.hpp"
 #include <Tools/Chrono.hpp>
 
-RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer, const ICollisionManager& col):
-    _scene(scene), _sceneDisplayer(sceneDisplayer), _manageCollision(col) {}
+RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer, CollisionManager* col):
+    _scene(scene), _sceneDisplayer(sceneDisplayer), _collisionMgr(col) {}
 
 void RaytracerEngine::updateScreen(Color backgroundColor, const Camera& camera) {
     Chrono<> c(false);
@@ -29,7 +29,7 @@ Color RaytracerEngine::getPixelColor(
 
     return collision.ifelseOpReturn<Color>(
     [&](const Collision& collision){
-        return _manageCollision(collision);
+        return _collisionMgr->getColor(collision);
     },
     [&](){
         return backgroundColor;

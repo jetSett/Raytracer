@@ -13,13 +13,13 @@ public:
     RaytracerEngine() = delete;
     RaytracerEngine(const RaytracerEngine&) = delete;
     RaytracerEngine& operator=(const RaytracerEngine&) = delete;
-    RaytracerEngine(const Scene&, SceneDisplayer&, const ICollisionManager& col);
+    RaytracerEngine(const Scene&, SceneDisplayer&, CollisionManager* col);
     void updateScreen(Color, const Camera&);
 private:
+    std::unique_ptr<CollisionManager> _collisionMgr;
     Color getPixelColor(unsigned int, unsigned int, Color, const Camera&) const;
     const Scene& _scene;
     SceneDisplayer& _sceneDisplayer;
-    const ICollisionManager& _manageCollision;
 };
 
 #endif
