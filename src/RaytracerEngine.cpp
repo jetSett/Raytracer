@@ -1,3 +1,4 @@
+#include <Tools/Debug.hpp>
 #include <vector>
 #include "RaytracerEngine.hpp"
 #include <Tools/Chrono.hpp>
@@ -6,15 +7,16 @@ RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDispla
     _scene(scene), _sceneDisplayer(sceneDisplayer), _collisionMgr(col) {}
 
 void RaytracerEngine::updateScreen(Color backgroundColor, const Camera& camera) {
-    Chrono<> c;
+    Chrono<> c(false);
     std::vector<uint32_t> screen(_sceneDisplayer.width()*_sceneDisplayer.height(), backgroundColor.code());
-    #pragma omp for
+    #pragma omp parallel for
     for (unsigned int line = 0; line < _sceneDisplayer.height(); ++line) {
         for (unsigned int column = 0; column < _sceneDisplayer.width(); ++column) {
             screen[line*_sceneDisplayer.width() + column] =
                 getPixelColor(line, column, backgroundColor, camera).code();
         }
     }
+    D(c.elapsedTime().count())
     _sceneDisplayer.update(screen);
 }
 
