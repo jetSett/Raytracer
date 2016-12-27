@@ -1,32 +1,30 @@
-#ifndef COLLISIONMANAGER_HPP
-#define COLLISIONMANAGER_HPP
+#ifndef COLLISION_MANAGER_HPP
+#define COLLISION_MANAGER_HPP
 
-#include <memory>
-#include <Tools/Functor.hpp>
 #include <Tools/Color.hpp>
 #include <Core/Collision.hpp>
 #include <Core/Camera.hpp>
 #include <Object.hpp>
 
-using LightFunctor = Functor<Color, const Collision&>; // we will have to change that !
-
-class Light_ZBuffer : public LightFunctor{
+class ICollisionManager {
 public:
-    virtual Color operator()(const Collision& c);
+    ICollisionManager() = default;
+    virtual Color operator()(const Collision& c) const = 0;
 };
 
-class Light_Basic : public LightFunctor{
+class Light_ZBuffer : public ICollisionManager {
 public:
-    virtual Color operator()(const Collision& c);
+    virtual Color operator()(const Collision& c) const override;
 };
 
-class CollisionManager{
+class Light_Basic : public ICollisionManager {
 public:
-    CollisionManager(LightFunctor* l);
-    ~CollisionManager();
-    Color getColor(const Collision& c) const;
-private:
-    std::unique_ptr<LightFunctor> _light;
+    virtual Color operator()(const Collision& c) const override;
+};
+
+namespace CollisionManager {
+    extern Light_ZBuffer zbuffer;
+    extern Light_Basic basic;
 };
 
 #endif
