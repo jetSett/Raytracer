@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <functional>
+#include <vector>
 
 void test1(){
     const unsigned int width = 1024;
@@ -24,45 +25,44 @@ void test1(){
     addObject(new Triangle(Point(-500, -200, 100), Point(-300, -180, 100), Point(-400, 0, 100)), new Material(Color::Cyan));
     addObject(new Sphere(Point(100, -50, 100) + Vect3(-40, 75, 0), 50), new Material(Color::Magenta));
 
+    std::vector<CollisionManager*> collisionManagers = {
+        new CollisionManager(new Light_ZBuffer),
+        new CollisionManager(new Light_Basic)
+    };
 
-    SceneDisplayer displayer1(width, height);
-    SceneDisplayer displayer2(width, height);
+    float ratio = 1.f / float(collisionManagers.size());
+    float windowWidth = ratio*width;
+    float windowHeight = ratio*height;
 
-    RaytracerEngine engine1(scene, displayer1, new CollisionManager(new Light_ZBuffer));
-    RaytracerEngine engine2(scene, displayer2, new CollisionManager(new Light_Basic));
+    std::vector<std::unique_ptr<SceneDisplayer>> displayers;
+    std::vector<std::unique_ptr<RaytracerEngine>> engines;
+    for (unsigned int subwindow = 0; subwindow < collisionManagers.size(); ++subwindow) {
+        displayers.emplace_back(new SceneDisplayer(width, height));
+        displayers[subwindow]->setPosition(subwindow*windowWidth, 0.f);
+        displayers[subwindow]->setScale(ratio, ratio);
+        engines.emplace_back(new RaytracerEngine(scene, *displayers[subwindow], collisionManagers[subwindow]));
+    }
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
-    engine1.updateScreen(Color::Black, camera);
-    engine2.updateScreen(Color::Black, camera);
+    for (const auto& engine : engines)
+        engine->updateScreen(Color::Black, camera);
 
     // Render Loop
-    sf::RenderWindow window1(sf::VideoMode(width, height), "Zbuffer");
-    sf::RenderWindow window2(sf::VideoMode(width, height), "Basic");
+    sf::RenderWindow window(sf::VideoMode(width, windowHeight), "RaytracerEngine");
 
-    while (window1.isOpen() || window2.isOpen()) {
+    while (window.isOpen()) {
 
-        window1.clear();
-        window1.draw(displayer1);
-        window1.display();
-
-        window2.clear();
-        window2.draw(displayer2);
-        window2.display();
+        window.clear();
+        for (const auto& displayer : displayers)
+            window.draw(*displayer);
+        window.display();
 
         sf::Event event;
-        if(window1.isOpen()){
-            if(window1.waitEvent(event)) {
+        if(window.isOpen()){
+            if(window.waitEvent(event)) {
                 if (event.type == sf::Event::Closed)
-                    window1.close();
+                    window.close();
             }
         }
-
-        if(window2.isOpen()){
-            if(window2.waitEvent(event)) {
-                if (event.type == sf::Event::Closed)
-                    window2.close();
-            }
-        }
-
     }
 }
