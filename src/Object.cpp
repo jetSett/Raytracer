@@ -9,7 +9,7 @@ OpCollision Object::findCollision(const Ray& ray) const {
     OpScalar t = _shape->intersect(ray);
     OpCollision collision;
     t.ifOp([&](Scalar t){
-        collision.assign(Collision(t, this));
+        collision.assign(Collision(t, ray, this));
     });
     return collision;
 }

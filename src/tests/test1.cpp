@@ -25,7 +25,7 @@ void test1(){
     addObject(new Sphere(Point(100, -50, 100) + Vect3(-40, 75, 0), 50), new Material(Color::Magenta));
 
     SceneDisplayer displayer(width, height);
-    RaytracerEngine engine(scene, displayer);
+    RaytracerEngine engine(scene, displayer, new CollisionManager(new Light_Basic));
 
     Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
     engine.updateScreen(Color::Black, camera);

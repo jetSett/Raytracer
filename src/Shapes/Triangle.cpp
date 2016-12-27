@@ -46,7 +46,7 @@ bool Triangle::contains(Point M) const {
 }
 
 OpVect3 Triangle::normal(Point M) const {
-    if(not contains(M))
-        return OpVect3();
+    // if(not contains(M))
+    //     return OpVect3();
     return OpVect3((fromTo(_v1, _v2).cross( fromTo(_v1, _v3) ) ).normalized());
 }

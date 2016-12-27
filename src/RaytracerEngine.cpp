@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 
-RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer):
-    _scene(scene), _sceneDisplayer(sceneDisplayer) {}
+RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer, CollisionManager* col):
+    _scene(scene), _sceneDisplayer(sceneDisplayer), _collisionMgr(col) {}
 
 void RaytracerEngine::updateScreen(Color backgroundColor, const Camera& camera) {
     std::vector<uint32_t> screen(_sceneDisplayer.width()*_sceneDisplayer.height(), backgroundColor.code());
@@ -26,10 +26,7 @@ Color RaytracerEngine::getPixelColor(
 
     return collision.ifelseOpReturn<Color>(
     [&](const Collision& collision){
-        // TODO add collision manager here
-        Scalar t = collision.t / Scalar(Camera::farfarAway);
-        Color color = collision.target->getMaterial().color;
-        return modulate(color, (1-t)*(1-t));
+        return _collisionMgr->getColor(collision);
     },
     [&](){
         return backgroundColor;
