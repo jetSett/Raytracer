@@ -1,13 +1,14 @@
-#include "RaytracerEngine.hpp"
-
-#include <iostream>
 #include <vector>
+#include "RaytracerEngine.hpp"
+#include <Tools/Chrono.hpp>
 
 RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer, CollisionManager* col):
     _scene(scene), _sceneDisplayer(sceneDisplayer), _collisionMgr(col) {}
 
 void RaytracerEngine::updateScreen(Color backgroundColor, const Camera& camera) {
+    Chrono<> c;
     std::vector<uint32_t> screen(_sceneDisplayer.width()*_sceneDisplayer.height(), backgroundColor.code());
+    #pragma omp for
     for (unsigned int line = 0; line < _sceneDisplayer.height(); ++line) {
         for (unsigned int column = 0; column < _sceneDisplayer.width(); ++column) {
             screen[line*_sceneDisplayer.width() + column] =

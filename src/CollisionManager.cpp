@@ -1,4 +1,3 @@
-#include <Tools/Debug.hpp>
 #include "CollisionManager.hpp"
 
 
@@ -15,7 +14,6 @@ Color Light_Basic::operator()(const Collision& col){
         t = std::abs(n.dot(col.ray.direction.normalized()));
     },
     [&](){
-        D(col.target)
         t = 1.;
     });
 
