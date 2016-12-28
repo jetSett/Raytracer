@@ -1,3 +1,4 @@
+#include <Tools/Debug.hpp>
 #include "CollisionManager.hpp"
 
 Color Light_ZBuffer::operator() (const Collision& collision) {
@@ -29,14 +30,12 @@ Color Light_Multi::operator()(const Collision& collision){
     Scalar t = 0;
     for(Lamp* l : _lamps){
         l->point_of_view(p).ifOp([&](Vect3 dir){
-
             collision.target->getShape().normal(p).ifelseOp([&](Vect3 n){
                 t += std::abs(n.dot(dir));
             },
             [&](){
                 throw std::exception();
             });
-
         });
     }
     t /= n;
