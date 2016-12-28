@@ -41,3 +41,16 @@ Point operator+(const Point& from, const Vect3& direction) {
     temp += direction;
     return temp;
 }
+
+PolarCoordinates::PolarCoordinates(AngleRad _longitude, AngleRad _latitude):
+    longitude(_longitude), latitude(_latitude) {}
+
+static const double pi  = 3.141592653589793238463;
+
+AngleRad fromDegToRad(AngleDeg degrees) {
+    return (degrees/180.)*pi;
+}
+
+AngleDeg fromRadToDeg(AngleRad radians) {
+    return (radians/pi)*180.;
+}

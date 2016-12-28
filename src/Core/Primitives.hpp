@@ -99,4 +99,16 @@ extern const Point absolut_origin;
 ///\brief a constant returned if there is no intersection
 extern const Scalar no_intersection;
 
+using AngleRad = Scalar;
+using AngleDeg = Scalar;
+
+struct PolarCoordinates {
+    PolarCoordinates() = default;
+    PolarCoordinates(AngleRad, AngleRad);
+    AngleRad longitude;
+    AngleRad latitude;
+};
+
+AngleRad fromDegToRad(AngleDeg);
+AngleDeg fromRadToDeg(AngleRad);
 #endif

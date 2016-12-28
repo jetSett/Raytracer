@@ -47,7 +47,6 @@ Color Light_Multi::operator()(const Collision& collision){
 CollisionManager::CollisionManager(LightFunctor* l) : _light(l){
 }
 
-
 CollisionManager::~CollisionManager(){
 }
 

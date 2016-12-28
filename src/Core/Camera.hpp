@@ -13,7 +13,7 @@ public:
     /// \fn Camera(const Point&, const Vect3&, Scalar, Scalar)
     /// \brief construct a new Camera
     /// param position position of camera
-    /// param direction direction of view, focal plan is normal to it
+    /// param direction longitude and latitude of camera
     /// param width width in pixels
     /// param height height in pixels
     /// param gammaWidth ratio along width axis
