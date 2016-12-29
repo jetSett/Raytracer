@@ -19,7 +19,7 @@ public:
     /// param gammaWidth ratio along width axis
     /// param gammaHeight ratio along height axis
     Camera(
-        const Point& position, const Vect3& direction,
+        const Point& position, const PolarCoordinates& direction,
         size_t width, size_t height,
         Scalar gammaWidth, Scalar gammaHeight);
 
@@ -27,7 +27,7 @@ public:
     /// \brief return Ray to enlight the pixel (line, column)
     /// \param line line of pixel
     /// \param column column of pixel
-    /// \warning : direction must have the form (0, 0, z)
+    /// \warning : direction must have the form (longitude, 0)
     /// \todo : fix getRay for other directions
     Ray getRay(unsigned int line, unsigned int column) const;
 
@@ -36,7 +36,7 @@ public:
 private:
 
     Point _position;
-    Vect3 _direction;
+    PolarCoordinates _direction;
     size_t _width;
     size_t _height;
     Scalar _gammaWidth;

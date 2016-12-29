@@ -43,7 +43,7 @@ void test1(){
         engines.emplace_back(new RaytracerEngine(scene, *displayers[subwindow], collisionManagers[subwindow]));
     }
 
-    Camera camera(absolut_origin, Vect3(0., 0., 1.), width, height, 1., 1.);
+    Camera camera(absolut_origin, PolarCoordinates(0., 0.), width, height, 1., 1.);
     for (const auto& engine : engines)
         engine->updateScreen(Color::Black, camera);
 

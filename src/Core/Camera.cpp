@@ -1,8 +1,10 @@
 #include "Camera.hpp"
 
+#include <cmath>
+
 const Scalar Camera::farfarAway = Scalar(1000);
 
-Camera::Camera(const Point& position, const Vect3& direction, size_t width, size_t height, Scalar gammaWidth, Scalar gammaHeight):
+Camera::Camera(const Point& position, const PolarCoordinates& direction, size_t width, size_t height, Scalar gammaWidth, Scalar gammaHeight):
     _position(position), _direction(direction*(1./direction.norm())),
     _width(width), _height(height), _gammaWidth(gammaWidth), _gammaHeight(gammaHeight)
 {}
@@ -12,7 +14,7 @@ Ray Camera::getRay(unsigned int linePixel, unsigned int columnPixel) const {
     Scalar column = Scalar(columnPixel) - Scalar(_width)/2;
 
     Point rayOrigin(_position);
-    rayOrigin += Vect3(column, line, Scalar(0));
+    rayOrigin += Vect3(column*cos(direction.longitude), line, column*sin(direction.longitude));
 
     Point rayTarget(_position);
     rayTarget += Vect3(column*_gammaWidth, line*_gammaHeight, farfarAway);
