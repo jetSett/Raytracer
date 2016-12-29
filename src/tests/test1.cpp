@@ -11,11 +11,18 @@ void test1(){
     auto& materials = ResourceManager<Material>::getInstance();
     auto& shapes = ResourceManager<IShape>::getInstance();
     auto& objects = ResourceManager<Object>::getInstance();
+    auto& lamps = ResourceManager<Lamp>::getInstance();
 
     Scene scene;
+    LampSet lSet;
+
     auto addObject = [&](IShape* shape, Material* material){
         scene.addObject(objects.createResource(new Object(
             shapes.createResource(shape), materials.createResource(material))));
+    };
+
+    auto addLamp = [&](Lamp* l){
+        lSet.push_back(lamps.createResource(l));
     };
 
     addObject(new Sphere(Point(0, 0, 500), 250), new Material(Color::Red));
@@ -25,9 +32,14 @@ void test1(){
     addObject(new Triangle(Point(-500, -200, 100), Point(-300, -180, 100), Point(-400, 0, 100)), new Material(Color::Cyan));
     addObject(new Sphere(Point(100, -50, 100) + Vect3(-40, 75, 0), 50), new Material(Color::Magenta));
 
+    addLamp(new LampPoint(scene, Point(0, 0, -200)));
+    addLamp(new LampPoint(scene, Point(0, 500, 0)));
+    addLamp(new LampPoint(scene, Point(100, 100, 0)));
+
     std::vector<CollisionManager*> collisionManagers = {
         new CollisionManager(new Light_ZBuffer),
-        new CollisionManager(new Light_Basic)
+        new CollisionManager(new Light_Basic),
+        new CollisionManager(new Light_Multi(lSet))
     };
 
     float ratio = 1.f / float(collisionManagers.size());
