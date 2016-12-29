@@ -37,9 +37,13 @@ void test1(){
     addLamp(new LampPoint(scene, Point(100, 100, 0)));
 
     std::vector<CollisionManager*> collisionManagers = {
-        new CollisionManager(new Light_ZBuffer),
+        //new CollisionManager(new Light_ZBuffer),
         new CollisionManager(new Light_Basic),
-        new CollisionManager(new Light_Multi(lSet))
+        new CollisionManager(new Light_Basic),
+        new CollisionManager(new Light_Basic),
+        new CollisionManager(new Light_Basic),
+        new CollisionManager(new Light_Basic)
+        //new CollisionManager(new Light_Multi(lSet))
     };
 
     float ratio = 1.f / float(collisionManagers.size());
@@ -55,9 +59,10 @@ void test1(){
         engines.emplace_back(new RaytracerEngine(scene, *displayers[subwindow], collisionManagers[subwindow]));
     }
 
-    Camera camera(absolut_origin, PolarCoordinates(0., 0.), width, height, 1., 1.);
-    for (const auto& engine : engines)
-        engine->updateScreen(Color::Black, camera);
+    for (unsigned int i = 0; i < engines.size(); ++i)
+        engines[i]->updateScreen(
+            Color::Black,
+            Camera(absolut_origin, PolarCoordinates(0.25*i, 0.), width, height, 1., 1.));
 
     // Render Loop
     sf::RenderWindow window(sf::VideoMode(width, windowHeight), "RaytracerEngine");
