@@ -44,16 +44,10 @@ void test1(){
     };
 
     float ratio = 1.f / float(collisionManagers.size());
-    float windowWidth = ratio*width;
-    float windowHeight = ratio*height;
-
-    std::vector<std::unique_ptr<SceneDisplayer>> displayers;
+    WindowManager displayers(Layout(1, 2), width, height);
     std::vector<std::unique_ptr<RaytracerEngine>> engines;
     for (unsigned int subwindow = 0; subwindow < collisionManagers.size(); ++subwindow) {
-        displayers.emplace_back(new SceneDisplayer(width, height));
-        displayers[subwindow]->setPosition(subwindow*windowWidth, 0.f);
-        displayers[subwindow]->setScale(ratio, ratio);
-        engines.emplace_back(new RaytracerEngine(scene, *displayers[subwindow], collisionManagers[subwindow]));
+        engines.emplace_back(new RaytracerEngine(scene, displayers(0, subwindow), collisionManagers[subwindow]));
     }
 
     for (unsigned int i = 0; i < engines.size(); ++i)
@@ -62,21 +56,18 @@ void test1(){
             Camera(absolut_origin, PolarCoordinates(0.25*i, 0.), width, height, 1., 1.));
 
     // Render Loop
-    sf::RenderWindow window(sf::VideoMode(width, windowHeight), "RaytracerEngine");
+    sf::RenderWindow window(sf::VideoMode(2*width, height), "RaytracerEngine");
 
     while (window.isOpen()) {
 
         window.clear();
-        for (const auto& displayer : displayers)
-            window.draw(*displayer);
+        window.draw(displayers);
         window.display();
 
         sf::Event event;
-        if(window.isOpen()){
-            if(window.waitEvent(event)) {
-                if (event.type == sf::Event::Closed)
-                    window.close();
-            }
+        if(window.waitEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
         }
     }
 }

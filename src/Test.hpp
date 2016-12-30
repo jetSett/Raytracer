@@ -4,7 +4,7 @@
 /// \file Test.hpp
 /// \brief contains the test of all kinds, to add yours, please create a new file with a new function and call it into your own main.cpp
 
-#include <GUI/SceneDisplayer.hpp>
+#include <GUI/WindowManager.hpp>
 #include "RaytracerEngine.hpp"
 #include <Shapes/Sphere.hpp>
 #include <Shapes/Triangle.hpp>
