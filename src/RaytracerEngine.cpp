@@ -1,7 +1,8 @@
 #include <Tools/Debug.hpp>
 #include <vector>
-#include "RaytracerEngine.hpp"
 #include <Tools/Chrono.hpp>
+
+#include "RaytracerEngine.hpp"
 
 RaytracerEngine::RaytracerEngine(const Scene& scene, SceneDisplayer& sceneDisplayer, CollisionManager* col):
     _scene(scene), _sceneDisplayer(sceneDisplayer), _collisionMgr(col) {}

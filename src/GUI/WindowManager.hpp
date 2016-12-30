@@ -17,13 +17,12 @@ class WindowManager : public sf::Drawable, public sf::Transformable {
 public:
     WindowManager(Layout, size_t, size_t);
     SceneDisplayer& operator()(unsigned, unsigned) const;
-    const SceneDisplayer& operator()(unsigned, unsigned) const;
-    // void fitIn(const sf::RenderWindow&);
+    sf::VideoMode fitIn(unsigned int, unsigned int);
 private:
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const override;
     const Layout _layout;
-    const unsigned int _displayerWidth;
-    const unsigned int _displayerHeight;
+    unsigned int _displayerWidth;
+    unsigned int _displayerHeight;
     std::vector<SceneDisplayer*> _displayers;
 };
 

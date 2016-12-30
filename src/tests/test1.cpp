@@ -4,8 +4,10 @@
 #include <functional>
 #include <vector>
 
+#include <Tools/Debug.hpp>
+
 void test1(){
-    const unsigned int width = 1024;
+    const unsigned int width = 832;
     const unsigned int height = 512;
 
     auto& materials = ResourceManager<Material>::getInstance();
@@ -39,25 +41,39 @@ void test1(){
 
     std::vector<CollisionManager*> collisionManagers = {
         //new CollisionManager(new Light_ZBuffer),
+        // new CollisionManager(new Light_Basic),
         new CollisionManager(new Light_Multi(lSet)),
-        new CollisionManager(new Light_Basic)
+        new CollisionManager(new Light_Multi(lSet)),
+        new CollisionManager(new Light_Multi(lSet)),
+        new CollisionManager(new Light_Multi(lSet))
     };
 
-    float ratio = 1.f / float(collisionManagers.size());
-    WindowManager displayers(Layout(1, 2), width, height);
+    WindowManager displayers(Layout(2, 2), width, height);
+    std::vector<std::pair<unsigned int, unsigned int>> pos = {
+        std::make_pair(0u, 0u),
+        std::make_pair(0u, 1u),
+        std::make_pair(1u, 0u),
+        std::make_pair(1u, 1u)
+    };
+
+    std::vector<Camera> cameras = {
+        Camera(absolut_origin, PolarCoordinates(-0.30, 0.), width, height, 1., 1.),
+        Camera(absolut_origin, PolarCoordinates(-0.15, 0.), width, height, 1., 1.),
+        Camera(absolut_origin, PolarCoordinates( 0.15, 0.), width, height, 1., 1.),
+        Camera(absolut_origin, PolarCoordinates( 0.30, 0.), width, height, 1., 1.)
+    };
+
     std::vector<std::unique_ptr<RaytracerEngine>> engines;
-    for (unsigned int subwindow = 0; subwindow < collisionManagers.size(); ++subwindow) {
-        engines.emplace_back(new RaytracerEngine(scene, displayers(0, subwindow), collisionManagers[subwindow]));
+    for (unsigned int i = 0; i < collisionManagers.size(); ++i) {
+        engines.emplace_back(new RaytracerEngine(
+            scene,
+            displayers(pos[i].first, pos[i].second),
+            collisionManagers[i]));
+        engines[i]->updateScreen(Color::Black, cameras[i]);
     }
 
-    for (unsigned int i = 0; i < engines.size(); ++i)
-        engines[i]->updateScreen(
-            Color::Black,
-            Camera(absolut_origin, PolarCoordinates(0.25*i, 0.), width, height, 1., 1.));
-
     // Render Loop
-    sf::RenderWindow window(sf::VideoMode(2*width, height), "RaytracerEngine");
-
+    sf::RenderWindow window(displayers.fitIn(1036,832), "RaytracerEngine");
     while (window.isOpen()) {
 
         window.clear();

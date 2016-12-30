@@ -25,8 +25,24 @@ SceneDisplayer& WindowManager::operator()(unsigned line, unsigned column) const 
     return *_displayers[line*_layout.nbColumns + column];
 }
 
-const SceneDisplayer& WindowManager::operator()(unsigned line, unsigned column) const {
-    return *_displayers[line*_layout.nbColumns + column];
+sf::VideoMode WindowManager::fitIn(unsigned int maxWidth, unsigned int maxHeight) {
+    unsigned int actualWidth = _layout.nbColumns * _displayerWidth;
+    unsigned int actualHeight = _layout.nbLines * _displayerHeight;
+    double widthRatio = double(maxWidth) / double(actualWidth);
+    double heightRatio = double(maxHeight) / double(actualHeight);
+    double extremRatio = std::min(widthRatio, heightRatio);
+    _displayerHeight *= extremRatio;
+    _displayerWidth *= extremRatio;
+    for (unsigned int line = 0; line < _layout.nbLines; ++line) {
+        for (unsigned int column = 0; column < _layout.nbColumns; ++column) {
+            SceneDisplayer& displayer = this->operator()(line, column);
+            displayer.setScale(extremRatio, extremRatio);
+            displayer.setPosition(column*_displayerWidth, line*_displayerHeight);
+        }
+    }
+    return sf::VideoMode(
+        _layout.nbColumns * _displayerWidth,
+        _layout.nbLines * _displayerHeight);
 }
 
 void WindowManager::draw(sf::RenderTarget& target, sf::RenderStates states) const {
