@@ -43,7 +43,7 @@ public:
         name += ss.str();
 
         _resources[name].reset(resource);
-        return _resources[name].get();
+        return resource;
     }
 
 private:
