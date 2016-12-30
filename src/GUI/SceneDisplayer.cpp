@@ -19,7 +19,6 @@ void SceneDisplayer::update(const std::vector<uint32_t>& pixels) {
 
 void SceneDisplayer::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     states.transform *= getTransform();
-    states.texture = &_texture;
     target.draw(_sprite, states);
 }
 
