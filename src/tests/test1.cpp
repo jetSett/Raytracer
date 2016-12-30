@@ -38,12 +38,8 @@ void test1(){
 
     std::vector<CollisionManager*> collisionManagers = {
         //new CollisionManager(new Light_ZBuffer),
-        new CollisionManager(new Light_Basic),
-        new CollisionManager(new Light_Basic),
-        new CollisionManager(new Light_Basic),
-        new CollisionManager(new Light_Basic),
-        new CollisionManager(new Light_Basic)
-        //new CollisionManager(new Light_Multi(lSet))
+        new CollisionManager(new Light_Multi(lSet))
+        //new CollisionManager(new Light_Basic())
     };
 
     float ratio = 1.f / float(collisionManagers.size());
