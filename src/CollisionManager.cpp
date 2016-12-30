@@ -24,19 +24,16 @@ Color Light_Basic::operator()(const Collision& col){
 Light_Multi::Light_Multi(LampSet s) : _lamps(s){
 }
 
-Color Light_Multi::operator()(const Collision& collision){
+Color Light_Multi::operator()(const Collision& collision) {
     const Point& p = collision.ray.getPoint(collision.t);
     unsigned n = _lamps.size();
     Scalar t = 0;
-    for(Lamp* l : _lamps){
+    for(Lamp* l : _lamps) {
         l->point_of_view(p).ifOp([&](Vect3 dir){
-            collision.target->getShape().normal(p).ifelseOp([&](Vect3 n){
-
-                if(negative(dir.dot(n)*fromTo(p, collision.ray.origin).dot(n))){
+            collision.target->getShape().normal(p).ifelseOp([&](Vect3 n) {
+                if(negative(dir.dot(n)*fromTo(p, collision.ray.origin).dot(n))) {
                     t += std::abs(n.dot(dir.normalized()));
-
                 }
-
             },
             [&](){
                 throw std::exception();
@@ -48,12 +45,10 @@ Color Light_Multi::operator()(const Collision& collision){
     return modulate(color, t);
 }
 
-CollisionManager::CollisionManager(LightFunctor* l) : _light(l){
-}
+CollisionManager::CollisionManager(LightFunctor* l) : _light(l) {}
 
-CollisionManager::~CollisionManager(){
-}
+CollisionManager::~CollisionManager(){}
 
-Color CollisionManager::getColor(const Collision& c) const{
+Color CollisionManager::getColor(const Collision& c) const {
     return _light->operator()(c);
 }
