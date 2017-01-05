@@ -1,0 +1,15 @@
+name=Test1
+width=832
+height=512
+
+#OBJECTS
+
+objet1:Sphere
+
+objet2:Triangle
+
+#LIGHTS
+
+light1:
+
+light2:
