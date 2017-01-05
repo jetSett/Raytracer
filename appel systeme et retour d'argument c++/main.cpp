@@ -10,6 +10,7 @@ int main()
    setenv("PYTHONPATH",".",1);
 
    PyObject *pName, *pModule, *pDict, *pFunc, *pValue, *presult;
+   PyObject *pv1, *pv2;
 
    // Initialize the Python Interpreter
    Py_Initialize();
@@ -37,16 +38,17 @@ int main()
        pValue=Py_BuildValue("(z)",(char*)"j ai perdu");
        PyErr_Print();
        cout << "Let's give this a shot!" << endl;
-       presult= PyObject_CallObject(pFunc,pValue);
+       presult = PyObject_CallObject(pFunc,pValue);
+       pv1 = PyTuple_GetItem(presult, 0);
+       pv2 = PyTuple_GetItem(presult, 1);
        PyErr_Print();
-   } else
-   {
+   } else {
        PyErr_Print();
    }
-   cout << "Result is " << PyInt_AsLong(presult) << endl;
-   Py_DECREF(pValue);
+   cout << "Parsing done !" << endl;
 
-   // Clean up
+   // clean up
+   Py_DECREF(pValue);
    Py_DECREF(pModule);
    Py_DECREF(pName);
 
