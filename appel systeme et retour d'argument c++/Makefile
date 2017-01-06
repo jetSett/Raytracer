@@ -1,5 +1,5 @@
 all: main.cpp
-	g++ -Wall -I/usr/include/python2.7 main.cpp -lpython2.7 -o main
+	g++ -Wall -I/usr/include/python2.7 main.cpp -lpython2.7  -o main
 
 .PHONY: clean mrproper
 

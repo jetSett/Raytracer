@@ -45,7 +45,7 @@ int main()
    } else {
        PyErr_Print();
    }
-   cout << "Parsing done !" << endl;
+   cout << "Result is " << PyInt_AsLong(presult) << endl;
 
    // clean up
    Py_DECREF(pValue);
