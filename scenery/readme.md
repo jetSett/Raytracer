@@ -10,7 +10,7 @@ Les types sont à choisir parmi les suivants :
 Plane, Sphere, Triangle, LightPoint
 
 Les matériaux sont à choisir parmi les suivants :
-ColorGreen, ColorRed, ColorYellow, ColorCyan, ColorMagenta
+ColorGreen, ColorRed, ColorYellow, ColorCyan, ColorMagenta, ColorBlue
 
 Pour annoter votre fichier scn, utilisez un ;
 Tout ce qui se trouve après un ; sur une ligne ne sera pas parsé.
@@ -69,7 +69,7 @@ tuple0 = (name, nb_objects, width, height, nb_displayer, layout_i,layout_j)
 
 les autres tuples (décrivant des objets) sont de la forme suivante. Attention, chaque objet dispose de paramètres différents. Le type de l'objet est TOUJOURS le premier élément du tuple.
 
-Sphere : ("Sphere", material, center_x, center_y, radius)
-Plane :  ("Plane", material, origin_x, origin_y, origin_z, normal_x, normal_y, normal_z)
-Triangle : ("Triangle", material, p1x, p1y, p1z, p2x, p2y, p2z)
-Light : ("Light", pos_x, pos_y, pos_z, orient_x, orient_y, orient_z)
+Sphere : (type, material, center, radius)
+Plane :  (type, material, origin, normal_x, normal_y, normal_z)
+Triangle : (type, material, p1, p2, p3)
+Light : (type, pos)

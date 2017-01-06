@@ -45,7 +45,7 @@ objet6:
   p3=(-400,0,100)
   material=ColorCyan
 
-light1,:
+light1:
   type=LampPoint
   pos=(0,500,-200)
 

@@ -1,16 +1,38 @@
 #include "launcher.hpp"
 #include <iostream>
+#include <string>
+#include <assert.h>
 
 using namespace boost::python;
 using namespace std;
 
-/*
+
 Point point_from_tuple(PyObject * t) {
 	return Point(PyInt_AsLong(PyTuple_GetItem(t, 0)),
 							 PyInt_AsLong(PyTuple_GetItem(t, 1)),
 							 PyInt_AsLong(PyTuple_GetItem(t, 2)));
 }
-*/
+
+auto get_material(int k) {
+	switch (k) {
+		case 0 : // ColorGreen
+			return Color::Green;
+		case 1 : // ColorRed
+			return Color::Red;
+		case 2 : // ColorYellow
+			return Color::Yellow;
+		case 3 : // ColorCyan
+			return Color::Cyan;
+		case 4 : // ColorMagenta
+			return Color::Magenta;
+		case 5  : // ColorBlue
+			return Color::Blue;
+		default :
+			cout << "Error : material Not found !" << endl;
+			assert(1==0);
+	}
+}
+
 void launch(int argc, char * argv[]) {
 
 	auto& materials = ResourceManager<Material>::getInstance();
@@ -65,7 +87,6 @@ void launch(int argc, char * argv[]) {
 	{
 			PyErr_Print();
 	}
-	cout << "Parsing Done !" << endl;
 
 	// Clean up
 	Py_DECREF(pValue);
@@ -84,25 +105,32 @@ void launch(int argc, char * argv[]) {
 	const unsigned int layout_i = PyInt_AsLong(PyTuple_GetItem(parameters,5));
 	const unsigned int layout_j = PyInt_AsLong(PyTuple_GetItem(parameters,6));
 
-
-	/*
-	 pour i allant de 1 à n :
-			current_object = PyList_GetItem(presult, i);
-			extraire les données concernant l'objet i avec un parser sur le tupple current_object
-	 */
-
-
-	addObject(new Sphere(Point(0, 0, 500), 250), new Material(Color::Red));
-	addObject(new Triangle(Point(0, 0, 1000), Point(300, -220, 500), Point(100, 200, 100)), new Material(Color::Green));
-	addObject(new Sphere(Point(100, -50, 100), 50), new Material(Color::Yellow));
-	addObject(new Sphere(Point(-200, 150, 400), 100), new Material(Color::Blue));
-	addObject(new Triangle(Point(-500, -200, 100), Point(-300, -180, 100), Point(-400, 0, 100)), new Material(Color::Cyan));
-	addObject(new Sphere(Point(100, -50, 100) + Vect3(-40, 75, 0), 50), new Material(Color::Magenta));
-
-	// addLamp(new LampPoint(scene, Point(0, 800, -2000)));
-	addLamp(new LampPoint(scene, Point(0, 500, -200)));
-	addLamp(new LampPoint(scene, Point(-400, 100, 0)));
-	// addLamp(new LampPoint(scene, Point(0, 0, 500)));
+	for (unsigned int i = 1 ; i <= nb_objects ; i++) {
+		current_object = PyList_GetItem(presult, i);
+		switch (PyInt_AsLong(PyTuple_GetItem(current_object,0))) {
+			case 0 : // Sphere
+				addObject(new Sphere(point_from_tuple(PyTuple_GetItem(current_object,2)),
+				                     PyInt_AsLong(PyTuple_GetItem(current_object,3))),
+									new Material(get_material(PyInt_AsLong(PyTuple_GetItem(current_object,1)))));
+				break;
+			case 1 : // Triangle
+			  addObject(new Triangle(point_from_tuple(PyTuple_GetItem(current_object,2)),
+															 point_from_tuple(PyTuple_GetItem(current_object,3)),
+															 point_from_tuple(PyTuple_GetItem(current_object,4))),
+									new Material(get_material(PyInt_AsLong(PyTuple_GetItem(current_object,1)))));
+				break;
+			case 2 : // Plane
+				break;
+			case 3 : // LampPoint
+				addLamp(new LampPoint(scene, point_from_tuple(PyTuple_GetItem(current_object,2))));
+				break;
+			case 4 : // camera
+				break;
+			default :
+				cout << "Error : cannot determine type" << endl;
+				break;
+		}
+	}
 
 	std::vector<CollisionManager*> collisionManagers = {
 			//new CollisionManager(new Light_ZBuffer),

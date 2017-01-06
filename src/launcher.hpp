@@ -17,4 +17,6 @@
 
 Point point_from_tuple(PyObject * t);
 
+auto get_material(int k);
+
 void launch(int argc, char * argv[]);
