@@ -9,8 +9,8 @@ import argparse
 types = {"Sphere" : 0 ,
          "Triangle" : 1,
          "Plane" : 2,
-         "LampPoint" : 3,
-         "Camera" : 4}
+         "LampPoint" : 3
+         }
 
 materials = { "ColorGreen" : 0,
               "ColorRed" : 1,
@@ -31,8 +31,18 @@ def delete_empty_lines(s):
 def is_a_label(line):
     return (line[-1]==":")
 
-def convert_tuple(s):
-    return s[1:-1].split(",")
+def is_a_tuple(s):
+    return (s[0]=="(" and s[-1] == ")")
+
+def convert(s):
+    if is_a_tuple(s) :
+        return tuple([int(x) for x in s[1:-1].split(",")])
+    else :
+        try :
+            x = int(s)
+        except :
+            return s
+        return x
 
 def get_rid_of_indent(s):
     l = re.findall('[\S]+', s)
@@ -51,18 +61,16 @@ def parse_object(obj):
         return parse_object_with_type(obj, ["type","material","origin","normal"])
     elif typ == "LampPoint" :
         return parse_object_with_type(obj, ["type","pos"])
-    elif typ == "Camera" :
-        return parse_object_with_type(obj, [])
     else :
         return error(" Type '"+ typ +"' is incorrect. Types should be in " + str(types.keys()))
 
 def parse_object_with_type(obj,check):
     order =[x for x in check]
     name = obj[0]
+    print name[:-1]
     arguments = {}
     for line in obj[1:] : # gettinf rid of the object name
         arg,value = line.split("=")
-        print(arg,value)
         if arg not in check:
             return error("while parsing object '" + name + "' , don't know what to do with '"+param+"' parameter")
         if arg == "type" :
@@ -70,7 +78,7 @@ def parse_object_with_type(obj,check):
         elif arg == "material" :
             arguments[arg]= materials[value] # changing string to int coding
         else :
-            arguments[arg]=value
+            arguments[arg]=convert(value)
         check.remove(arg)
     if check :
         missing = ""
@@ -108,7 +116,7 @@ def parse(s_file):
     before,after = delete_empty_lines(source[:i]) , delete_empty_lines(source[i+1:])
     # before = global parameters ; after = object description
 
-    print "------ Now parsing the parameters -------"
+    print "Now parsing the parameters ..."
     for line in before :
         param,value = line.split("=")
         if param not in parameters_check:
@@ -126,13 +134,11 @@ def parse(s_file):
     width = int(parameters["width"])
     height = int(parameters["height"])
     nb_displayer = int(parameters["nb_displayer"])
-    layout = convert_tuple(parameters["layout"])
-    layout_i = int(layout[0])
-    layout_j = int(layout[1])
-    code.append((name,nb_objects, width, height, nb_displayer, layout_i, layout_j))
+    layout = convert(parameters["layout"])
+    code.append((name,nb_objects, width, height, nb_displayer, layout[0], layout[1]))
 
 
-    print "------ now parsing the objects ------"
+    print "Now parsing the objects ..."
     # detecting objects labels and splitting the datas
     labels = []
     for i in range(len(after)):
@@ -148,7 +154,7 @@ def parse(s_file):
     an_object = [get_rid_of_indent(line) for line in an_object]
     code.append(parse_object(an_object))
     print "Parsing DONE"
-    print(code)
+    print code
     return code
 
 ## ------ main ------
@@ -159,9 +165,7 @@ if __name__ == '__main__':
 
     options=argparser.parse_args()
     code = parse(options.filename)
-    """
     f = open("file.obj",'w')
     for x in code :
-        f.write(x)
+        f.write(str(x))
     f.close()
-    """

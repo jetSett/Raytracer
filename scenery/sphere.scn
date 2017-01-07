@@ -1,0 +1,18 @@
+name=sphere
+width=832
+height=512
+nb_objects=2
+nb_displayer=4
+layout=(2,2)
+
+#OBJECTS
+
+objet1:
+  type=Sphere
+  center=(0,0,5000)
+  radius=250
+  material=ColorRed
+
+light1:
+  type=LampPoint
+  pos=(0,500,-200)
