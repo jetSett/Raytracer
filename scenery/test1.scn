@@ -9,7 +9,7 @@ layout=(2,2)
 
 objet1:
   type=Sphere ; j'ai perdu
-  center=(0,0,5000)
+  center=(0,0,500)
   radius=250
   material=ColorRed
 
