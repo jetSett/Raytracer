@@ -1,9 +1,19 @@
 name=Test1 ;un joli nom
-width=832 ;largeur de la fenetre
-height=512 ; hauteur de la fenetre
+width=832 ;largeur de la fenetre totale
+height=512 ; hauteur de la fenetre totale
 nb_objects=8
-nb_displayer=4
-layout=(2,2)
+nb_displayer=1
+layout=(1,1)
+
+#CAMERAS
+
+camera1:
+ pos=(0,0,0)
+ orient=(0.3,0.)
+ width=832
+ height=512
+ gammaWidth=1.
+ gammaHeight=1.
 
 #OBJECTS
 

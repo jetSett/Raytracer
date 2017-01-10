@@ -12,6 +12,11 @@ Point point_from_tuple(PyObject * t) {
 							 PyInt_AsLong(PyTuple_GetItem(t, 2)));
 }
 
+PolarCoordinates polar_coordinates_from_tuple(PyObject * t){
+	return PolarCoordinates(PyFloat_AsDouble(PyTuple_GetItem(t,0)),
+												  PyFloat_AsDouble(PyTuple_GetItem(t,1)));
+}
+
 const Color get_material(int k) {
 	switch (k) {
 		case 0 : // ColorGreen
@@ -31,6 +36,7 @@ const Color get_material(int k) {
 			assert(1==0);
 	}
 }
+
 
 PyObject * parse(int argc, char * argv[]) {
 

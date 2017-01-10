@@ -17,6 +17,8 @@
 
 Point point_from_tuple(PyObject * t);
 
+PolarCoordinates polar_coordinates_from_tuple(PyObject * t);
+
 const Color get_material(int k);
 
 PyObject * parse(int argc, char * argv[]);

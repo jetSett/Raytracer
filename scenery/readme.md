@@ -15,14 +15,17 @@ ColorGreen, ColorRed, ColorYellow, ColorCyan, ColorMagenta, ColorBlue
 Pour annoter votre fichier scn, utilisez un ;
 Tout ce qui se trouve après un ; sur une ligne ne sera pas parsé.
 
+/!\ ATTENTION : Les lignes que vous écrivez ne doivent pas comporter d'espaces internes !!
+
 # Préambule
   Le préambule décrit les paramètres globaux de la scène. Les paramètres à remplir sont les suivants :
   - name : un petit nom sympa pour cette scène.
   - width
   - height
   - nb_objects : le nombre total d'objets
-  - nb_displayer : le nombre de displayer (= fenêtres donnant sur la même scène mais à des angles différents)
+  - nb_displayer : le nombre de displayer (= fenêtres donnant sur la même scène mais à des angles différents). Indique aussi le nombre de cameras !
   - layout : l'organisation de ces displayer, de la forme (i,j) => i lignes de j displayer
+
 
 # Descriptions des objets.
 
@@ -55,10 +58,19 @@ entree=parametre. Il est conseillé d'indenter ces lignes pour une meilleure lis
   -type=LampPoint
   -pos
 
+Attention, il doit avoir autant d'objets que le paramètre nb_objects indique. S'il y en a moins, on aura un segfault. S'il y en a plus, les derniers ne seront pas affichés.
+
+# Descriptions des cameras.
+La description des cameras commence à partir de la ligne #CAMERAS du fichier. Elle peut être faite avant ou après la description des objets, cela n'a pas d'importance.
+
 [] Type Camera :
-   -type=Camera
-   -absolut_origin
-   -polar_coordinates
+   -pos : position
+   -orient : orientation de la camera. angles polaires phi et psi
+   -width
+   -height : dimensions du fov de la camera
+   -gammaWidth : la déformation horizontale
+   -gammaHeight : la déformation verticale
+
 
 ## Conventions de codage des données de sortie
 
@@ -67,7 +79,11 @@ Le premier tuple de la liste contient les paramètres globaux de la scène. Cont
 
 tuple0 = (name, nb_objects, width, height, nb_displayer, layout_i,layout_j)
 
-les autres tuples (décrivant des objets) sont de la forme suivante. Attention, chaque objet dispose de paramètres différents. Le type de l'objet est TOUJOURS le premier élément du tuple.
+les tuples décrivant des cameras sont de la forme suivante :
+
+Camera : (pos, polar_coordinates)
+
+les tuples décrivant des objets sont de la forme suivante. Attention, chaque objet dispose de paramètres différents. Le type de l'objet est TOUJOURS le premier élément du tuple.
 
 Sphere : (type, material, center, radius)
 Plane :  (type, material, origin, normal_x, normal_y, normal_z)
