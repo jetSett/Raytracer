@@ -1,0 +1,88 @@
+name=Test1 ;un joli nom
+width=1036 ;largeur de la fenetre totale
+height=832 ; hauteur de la fenetre totale
+nb_objects=8
+nb_displayer=4
+layout=(2,2)
+
+#CAMERAS
+
+camera1:
+ pos=(0,0,0)
+ orient=(-0.30,0.)
+ width=832
+ height=512
+ gammaWidth=1.
+ gammaHeight=1.
+
+camera2:
+  pos=(0,0,0)
+  orient=(-0.15,0.)
+  width=832
+  height=512
+  gammaWidth=1.
+  gammaHeight=1.
+
+camera3:
+  pos=(0,0,0)
+  orient=(0.15,0.)
+  width=832
+  height=512
+  gammaWidth=1.
+  gammaHeight=1.
+
+camera4:
+  pos=(0,0,0)
+  orient=(0.30,0.)
+  width=832
+  height=512
+  gammaWidth=1.
+  gammaHeight=1.
+
+#OBJECTS
+
+objet1:
+  type=Sphere ; j'ai perdu
+  center=(0,0,500)
+  radius=250
+  material=ColorRed
+
+objet2:
+  type=Triangle
+  p1=(0,0,1000)
+  p2=(300,-220,500)
+  p3=(100,200,100)
+  material=ColorGreen
+
+objet3:
+  type=Sphere
+  center=(100,-50,100)
+  radius=50
+  material=ColorYellow
+
+objet4:
+  type=Sphere
+  center=(-200,150,400)
+  radius=100
+  material=ColorBlue
+
+objet5:
+  type=Sphere
+  center=(60,25,100)
+  radius=50
+  material=ColorMagenta
+
+objet6:
+  type=Triangle
+  p1=(-500,-200,100)
+  p2=(-300,-180,100)
+  p3=(-400,0,100)
+  material=ColorCyan
+
+light1:
+  type=LampPoint
+  pos=(0,500,-200)
+
+light2:
+  type=LampPoint
+  pos=(-400,100,0)

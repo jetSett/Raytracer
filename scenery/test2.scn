@@ -1,0 +1,49 @@
+name=test2
+width=832
+height=512
+nb_objects=2
+nb_displayer=1
+layout=(1,1)
+
+#CAMERAS
+
+camera1:
+ pos=(0,0,0)
+ orient=(0.,0.)
+ width=832
+ height=512
+ gammaWidth=1.
+ gammaHeight=1.
+
+#OBJECTS
+
+sphere:
+  type=Sphere
+  center=(0,0,1000)
+  radius=250
+  material=ColorCyan
+
+objet1:
+  type=Triangle
+  p1=(0,0,1000)
+  p2=(300,-200,-500)
+  p3=(100,-200,-100)
+  material=ColorGreen
+
+objet2:
+  type=Triangle
+  p1=(0,0,1000)
+  p2=(-300,200,200)
+  p3=(-200,100,100)
+  material=ColorRed
+
+objet3:
+  type=Triangle
+  p1=(0,0,1000)
+  p2=(0,200,500)
+  p3=(100,200,-100)
+  material=ColorMagenta
+
+light1:
+  type=LampPoint
+  pos=(0,500,-200)
