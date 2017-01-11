@@ -15,7 +15,7 @@
 
 \maketitle
 
-\section*{Présentation}
+\section*{Présentation (cf Wikipedia)}
  
 Le \textit{Raytracing} (ou lancer de rayons en québecois supérieur) est une méthode de rendu de scènes 3D. Il permet d'obtenir des images d'excellente qualité en simulant le comportement naturel de la lumière : réflexions, ombres, changement d'indice, diffusion, éclairage, flou de profondeur... 
   
@@ -50,7 +50,7 @@ On peut prendre en compte l'éclairage de façon très simple : on calcule les c
 Implémentez un raytracer élémentaire. Pour cela vous devez supporter :  
   
 \begin{description}
-\item [Une caméra] simple unidirectionnelle, de normale orientée selon l'axe z et centrée en 
+\item [Une caméra] simple unidirectionnelle, de normale orientée selon l'axe z et centrée en $(0, 0, 0)$
 \item [Des objets simples] comme des sphères monochromatique. Pensez à une architecture assez souple pour pouvoir gérer d'autres formes plus tard. 
 
 Équation décrivant un rayon : $ t\in \mathbb{R}, d\in \mathbb{R}^3, O + dt$ où $d$ est la direction
@@ -79,7 +79,10 @@ Rajoutez :
 \section*{Conseils}  
 \subsection{Architecture}  
   
-blablabla
+Pensez que votre moteur va évoluer. L'idée est de mettre en pratique tout ce que vous avez appris en terme de programmation orientée objet et de généricité pour créer quelque chose adaptatif et évolutif. Pensez par exemple à une interface IForme pour vos différentes formes, et posez vous les questions suivantes : qu'est ce qui caractérise mon objet ? quel est son essence ? Si vous codez en vous posant ces questions, votre architechture ne peut que tendre vers le bon.
+
+\subsection{Travail à plusieurs}
+Autre chose : une solution pour travailler vite et avoir quelque chose de plus puissant est de travailler à plusieurs. Parlez en à votre TDman/TDgirl et profitez en pour apprendre à travailler à plusieurs sur un même code : regardez du coté de Git.
 
 \subsection{Bibliothèque et langage}  
   
