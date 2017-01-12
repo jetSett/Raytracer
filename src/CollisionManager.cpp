@@ -7,7 +7,7 @@ Color Light_ZBuffer::operator() (const Collision& collision) {
     return modulate(color, (1-t)*(1-t));
 }
 
-Color Light_Basic::operator()(const Collision& col){
+Color Light_Ambiant::operator()(const Collision& col){
     const Point& p = col.ray.getPoint(col.t);
     Scalar t = 0.;
     col.target->getShape().normal(p).ifelseOp([&](Vect3 n){

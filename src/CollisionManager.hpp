@@ -18,7 +18,7 @@ public:
     virtual Color operator()(const Collision& c);
 };
 
-class Light_Basic : public LightFunctor{
+class Light_Ambiant : public LightFunctor{
 public:
     virtual Color operator()(const Collision& c);
 };
