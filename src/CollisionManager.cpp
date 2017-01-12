@@ -31,7 +31,7 @@ Color Light_Multi::operator()(const Collision& collision) {
     for(Lamp* l : _lamps) {
         l->point_of_view(p).ifOp([&](Vect3 dir){
             collision.target->getShape().normal(p).ifelseOp([&](Vect3 n) {
-                if(negative(dir.dot(n)*fromTo(p, collision.ray.origin).dot(n))) {
+                if(positive(dir.dot(n)*fromTo(collision.ray.origin, p).dot(n))) {
                     t += std::abs(n.dot(dir.normalized()));
                 }
             },
