@@ -188,9 +188,9 @@ public:
 	{
 		if(_isOk)
 		{
-			f(_t);
+			return f(_t);
 		}else{
-			g();
+			return g();
 		}
 	}
 
